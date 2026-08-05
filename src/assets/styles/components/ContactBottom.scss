@@ -1,0 +1,210 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.contact-bottom {
+  padding: $space-8 $space-6 $space-16;
+
+  @include respond-to(lg) {
+    padding: $space-8 $space-10 $space-20;
+  }
+
+  &__grid {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    max-width: 1440px;
+    gap: $space-5;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-6;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__title {
+    margin-top: $space-3;
+    font-family: $font-serif;
+    font-size: 32px;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 42px;
+    }
+  }
+
+  &__faq-list {
+    margin-top: $space-8;
+
+    > * + * {
+      margin-top: $space-3;
+    }
+  }
+
+  &__faq-item {
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: $shadow-agara-soft;
+  }
+
+  &__faq-trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-4 $space-5;
+    text-align: left;
+
+    @include respond-to(sm) {
+      padding-left: $space-6;
+      padding-right: $space-6;
+    }
+  }
+
+  &__faq-question {
+    font-family: $font-serif;
+    font-size: 17px;
+    line-height: 1.375;
+    color: $agara-charcoal;
+
+    @include respond-to(sm) {
+      font-size: 18px;
+    }
+  }
+
+  &__faq-chevron {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+    color: rgba($agara-charcoal, 0.5);
+    @include transition(transform, 300ms);
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__faq-answer-wrap {
+    overflow: hidden;
+  }
+
+  &__faq-answer {
+    border-top: 1px solid rgba(#e7ded3, 0.8);
+    padding: $space-3 $space-5 $space-5;
+    font-size: 14px;
+    line-height: 1.9;
+    color: $secondary-text;
+
+    @include respond-to(sm) {
+      padding-left: $space-6;
+      padding-right: $space-6;
+      font-size: 15px;
+    }
+  }
+
+  &__cta-card {
+    position: relative;
+    min-height: 420px;
+    overflow: hidden;
+    border-radius: $radius-32;
+    box-shadow: $shadow-agara-soft;
+
+    @include respond-to(lg) {
+      min-height: 100%;
+    }
+  }
+
+  &__cta-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.15)
+    );
+  }
+
+  &__cta-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    min-height: 420px;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: $space-8;
+
+    @include respond-to(sm) {
+      padding: $space-10;
+    }
+
+    @include respond-to(lg) {
+      padding: $space-12;
+    }
+  }
+
+  &__cta-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  &__cta-title {
+    margin-top: $space-3;
+    max-width: 28rem;
+    font-family: $font-serif;
+    font-size: 32px;
+    line-height: 1.1;
+    color: #fff;
+
+    @include respond-to(lg) {
+      font-size: 40px;
+    }
+  }
+
+  &__cta-link {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-8;
+    border-radius: $radius-full;
+    background: #fff;
+    padding: $space-3_5 $space-7;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $agara-charcoal;
+    @include transition(transform, 300ms);
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__cta-link-icon {
+    width: 14px;
+    height: 14px;
+  }
+}

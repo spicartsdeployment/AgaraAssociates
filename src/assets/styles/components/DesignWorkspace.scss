@@ -1,0 +1,578 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.design-workspace {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+
+    /* Header */
+    &__header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: $space-4;
+
+        @include respond-to(md) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $color-foreground;
+        margin: 0 0 $space-1 0;
+    }
+
+    &__subtitle {
+        font-size: 0.9rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-2;
+        flex-wrap: wrap;
+
+        button {
+            display: flex;
+            align-items: center;
+            gap: $space-2;
+        }
+    }
+
+    /* Filters */
+    &__filters {
+        display: flex;
+        gap: $space-3;
+        align-items: center;
+        padding: $space-4;
+        background: rgba(255, 255, 255, 0.4);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: $radius-lg;
+        flex-wrap: wrap;
+
+        @include respond-to(sm) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+
+    &__search-input {
+        flex: 1;
+        min-width: 200px;
+        padding: $space-2 $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        color: $color-foreground;
+        background: white;
+
+        &::placeholder {
+            color: $color-muted;
+        }
+
+        @include respond-to(sm) {
+            min-width: 100%;
+        }
+    }
+
+    &__filter-select {
+        padding: $space-2 $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        color: $color-foreground;
+        background: white;
+        cursor: pointer;
+    }
+
+    /* Folders Section */
+    &__folders-section {
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__folder-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: $space-3;
+    }
+
+    &__folder-card {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+        padding: $space-3;
+        background: rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(15, 23, 42, 0.06);
+        border-radius: $radius-lg;
+        cursor: pointer;
+        transition: all 200ms ease-out;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(15, 23, 42, 0.12);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+            transform: translateY(-2px);
+        }
+
+        &--active {
+            border-color: $color-primary;
+            background: linear-gradient(135deg, hsl-alpha($primary-h, 0.05), hsl-alpha($primary-h, 0.02));
+        }
+    }
+
+    &__folder-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: $radius-md;
+        background: hsl-alpha($primary-h, 0.1);
+        color: $color-primary;
+    }
+
+    &__folder-info {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+    }
+
+    &__folder-name {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__folder-count {
+        font-size: 0.75rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    /* Files Section */
+    &__files-section {
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__files-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__file-count {
+        font-size: 0.875rem;
+        color: $color-muted;
+        font-weight: 500;
+    }
+
+    &__file-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: $space-3;
+    }
+
+    &__file-card {
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+        padding: $space-4;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: $radius-lg;
+        transition: all 200ms ease-out;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(15, 23, 42, 0.12);
+            box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+            transform: translateY(-2px);
+        }
+    }
+
+    &__file-preview {
+        position: relative;
+        height: 120px;
+        background: linear-gradient(135deg, hsl-alpha($primary-h, 0.08), hsl-alpha($primary-h, 0.04));
+        border-radius: $radius-md;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    &__file-type-badge {
+        position: absolute;
+        top: $space-2;
+        left: $space-2;
+        padding: $space-1 $space-2;
+        background: rgba(15, 23, 42, 0.8);
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-radius: $radius-sm;
+    }
+
+    &__file-info {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+    }
+
+    &__file-name {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: $color-foreground;
+        margin: 0;
+        word-break: break-word;
+    }
+
+    &__file-meta {
+        font-size: 0.8rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__file-uploader {
+        font-size: 0.75rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__file-status {
+        display: flex;
+        gap: $space-2;
+    }
+
+    &__file-actions {
+        display: flex;
+        gap: $space-2;
+        padding-top: $space-2;
+        border-top: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    &__action-button {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $space-2;
+        background: transparent;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        color: $color-muted;
+        cursor: pointer;
+        transition: all 150ms ease-out;
+
+        &:hover:not(&--danger) {
+            background: hsl-alpha($primary-h, 0.05);
+            color: $color-primary;
+        }
+
+        &--danger {
+            &:hover {
+                background: rgba(239, 68, 68, 0.05);
+                border-color: #ef4444;
+                color: #ef4444;
+            }
+        }
+    }
+
+    /* Empty State */
+    &__empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $space-3;
+        padding: $space-8 $space-4;
+        text-align: center;
+    }
+
+    &__empty-icon {
+        color: $color-muted;
+        opacity: 0.5;
+    }
+
+    &__empty-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__empty-text {
+        font-size: 0.9rem;
+        color: $color-muted;
+        margin: 0;
+        max-width: 400px;
+    }
+
+    &__topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $space-4;
+        padding: $space-4 $space-0;
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: $radius-lg;
+    }
+
+    &__properties-panel {
+        margin-top: $space-4;
+        padding: $space-4;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: $radius-lg;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    &__properties-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $space-4;
+        margin-bottom: $space-4;
+    }
+
+    &__properties-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__properties-subtitle {
+        font-size: 0.9rem;
+        color: $color-muted;
+        margin: 0.25rem 0 0;
+    }
+
+    &__properties-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: $space-3;
+    }
+
+    &__properties-item {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+        padding: $space-3;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        border-radius: $radius-md;
+    }
+
+    &__properties-item span {
+        font-size: 0.75rem;
+        color: $color-muted;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    &__properties-item strong {
+        font-size: 0.95rem;
+        color: $color-foreground;
+        font-weight: 600;
+    }
+
+    &__folder-card-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $space-2;
+        margin-top: $space-3;
+    }
+
+    &__folder-link {
+        display: flex;
+        align-items: flex-start;
+        gap: $space-3;
+        text-decoration: none;
+    }
+
+    &__folder-card {
+        min-height: 170px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__folders-section {
+        width: 100%;
+    }
+
+    /* Approval Section */
+    &__approval-section {
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__approval-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: $space-4;
+        padding-bottom: $space-4;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    &__approval-item {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+    }
+
+    &__label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__status-value {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: $color-foreground;
+        margin: 0;
+        text-transform: capitalize;
+    }
+
+    &__meta {
+        font-size: 0.8rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__approval-notes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: $space-4;
+        padding: $space-4 0;
+    }
+
+    &__note-block {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+    }
+
+    &__textarea {
+        padding: $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        font-family: inherit;
+        color: $color-foreground;
+        background: rgba(255, 255, 255, 0.6);
+        resize: vertical;
+
+        &::placeholder {
+            color: $color-muted;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            background: white;
+        }
+    }
+
+    &__approval-actions {
+        display: flex;
+        gap: $space-2;
+        flex-wrap: wrap;
+        padding-top: $space-4;
+
+        @include respond-to(sm) {
+            flex-direction: column;
+        }
+
+        button {
+            flex: 1;
+            min-width: 120px;
+
+            @include respond-to(sm) {
+                flex: none;
+            }
+        }
+    }
+
+    /* Revision History */
+    &__revision-history {
+        margin-top: $space-4;
+    }
+
+    &__history-list {
+        display: flex;
+        flex-direction: column;
+        gap: $space-3;
+    }
+
+    &__history-item {
+        display: flex;
+        gap: $space-3;
+        padding-bottom: $space-3;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        }
+    }
+
+    &__history-dot {
+        width: 12px;
+        height: 12px;
+        min-width: 12px;
+        border-radius: 50%;
+        background: $color-primary;
+        margin-top: 4px;
+    }
+
+    &__history-content {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+        flex: 1;
+    }
+
+    &__history-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__history-meta {
+        font-size: 0.85rem;
+        color: $color-muted;
+        margin: 0;
+    }
+
+    &__history-date {
+        font-size: 0.75rem;
+        color: $color-muted;
+        margin: 0;
+    }
+}

@@ -1,0 +1,59 @@
+@use "variables" as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-heading;
+  font-family: $font-inter;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $tracking-tight;
+  line-height: $line-height-tight;
+}
+
+p,
+span,
+label,
+li,
+td,
+th,
+button,
+input,
+textarea,
+select {
+  color: $color-body;
+  font-family: $font-inter;
+}
+
+a {
+  color: $color-foreground;
+  text-decoration: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: $color-muted;
+  opacity: 0.7;
+}
+
+.text-heading {
+  color: $color-heading;
+}
+
+.text-body {
+  color: $color-body;
+}
+
+.font-serif {
+  font-family: $font-serif;
+}
+
+.font-sans {
+  font-family: $font-inter;
+}
+
+.font-elms {
+  font-family: $font-elms;
+}

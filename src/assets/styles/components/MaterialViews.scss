@@ -1,0 +1,541 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.material-views {
+  &__subcategory-grid {
+    display: grid;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__subcategory-btn {
+    text-align: left;
+    padding: $space-4;
+    border-radius: $radius-2xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    background-color: hsl-alpha($surface-h, 0.5);
+    cursor: pointer;
+    @include transition(all);
+
+    &:hover {
+      background-color: $color-surface-hover;
+      border-color: hsl-alpha($accent-h, 0.3);
+    }
+  }
+
+  &__subcategory-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  &__subcategory-count {
+    font-size: 0.75rem;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: $space-20;
+    padding-bottom: $space-20;
+    text-align: center;
+  }
+
+  &__empty-icon {
+    width: $space-12;
+    height: $space-12;
+    color: hsl-alpha($muted-foreground-h, 0.4);
+    margin-bottom: $space-3;
+  }
+
+  &__empty-title {
+    font-weight: 500;
+  }
+
+  &__empty-text {
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__table-wrap {
+    border-radius: $radius-2xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    overflow: hidden;
+    background-color: hsl-alpha($surface-h, 0.4);
+  }
+
+  &__table-scroll {
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    font-size: 0.875rem;
+  }
+
+  &__thead-row {
+    border-bottom: 1px solid $color-border;
+    background-color: hsl-alpha($surface-h, 0.8);
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $color-muted-foreground;
+  }
+
+  &__th {
+    padding: $space-3;
+
+    &--icon {
+      width: $space-8;
+    }
+
+    &--material {
+      min-width: 200px;
+    }
+
+    &--actions {
+      width: 5rem;
+    }
+  }
+
+  &__tbody-row {
+    border-bottom: 1px solid $color-border;
+    cursor: pointer;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: hsl-alpha($surface-hover-h, 0.8);
+    }
+
+    &--selected {
+      background-color: hsl-alpha($accent-h, 0.05);
+    }
+  }
+
+  &__td {
+    padding: $space-3;
+
+    &--mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      color: $color-muted-foreground;
+    }
+
+    &--medium {
+      font-weight: 500;
+    }
+
+    &--muted {
+      color: $color-muted-foreground;
+    }
+
+    &--truncate {
+      font-size: 11px;
+      color: $color-muted-foreground;
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &--price {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    &--nums {
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__star {
+    width: 0.875rem;
+    height: 0.875rem;
+    cursor: pointer;
+
+    &--favorite {
+      fill: $color-accent;
+      color: $color-accent;
+    }
+
+    &--muted {
+      color: hsl-alpha($muted-foreground-h, 0.4);
+    }
+  }
+
+  &__view-btn {
+    width: $space-7;
+    height: $space-7;
+  }
+
+  &__view-btn-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  &__grouped {
+    > * + * {
+      margin-top: $space-6;
+    }
+  }
+
+  &__group-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: $space-3;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__group-badge {
+    font-size: 10px;
+  }
+
+  &__card-grid {
+    display: grid;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__gallery-grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__gallery-item {
+    border-radius: $radius-2xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    overflow: hidden;
+    cursor: pointer;
+    @include transition(box-shadow border-color);
+
+    &:hover {
+      box-shadow: $shadow-glass-sm;
+    }
+
+    &--selected {
+      border-color: $color-accent;
+      box-shadow: 0 0 0 1px hsl-alpha($accent-h, 0.3);
+    }
+  }
+
+  &__gallery-body {
+    padding: $space-3;
+
+    > * + * {
+      margin-top: $space-1;
+    }
+  }
+
+  &__gallery-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__gallery-meta {
+    font-size: 10px;
+    color: $color-muted-foreground;
+  }
+
+  &__gallery-price {
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__gallery-unit {
+    font-size: 10px;
+    font-weight: 400;
+    color: $color-muted-foreground;
+  }
+
+  &__default-grid {
+    display: grid;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}
+
+.material-card {
+  border-radius: $radius-2xl;
+  border: 1px solid hsl-alpha($border-h, 0.5);
+  background-color: hsl-alpha($surface-h, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+  overflow: hidden;
+  @include transition(all);
+
+  &:hover {
+    box-shadow: $shadow-glass-sm;
+    border-color: $color-border;
+  }
+
+  &--selected {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 1px hsl-alpha($accent-h, 0.3);
+  }
+
+  &--compare {
+    box-shadow: 0 0 0 2px hsl-alpha($info-h, 0.4);
+  }
+
+  &__body {
+    padding: $space-4;
+
+    > * + * {
+      margin-top: $space-3;
+    }
+  }
+
+  &__top {
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-1;
+  }
+
+  &__name {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.375;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__favorite-btn {
+    flex-shrink: 0;
+    padding: $space-1;
+    border: none;
+    border-radius: $radius-lg;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__favorite-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+
+    &--active {
+      fill: $color-accent;
+      color: $color-accent;
+    }
+
+    &--muted {
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__sku {
+    font-size: 10px;
+    color: $color-muted-foreground;
+    margin-top: $space-0_5;
+  }
+
+  &__brand {
+    font-size: 11px;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__price {
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__unit {
+    font-size: 10px;
+    color: $color-muted-foreground;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__availability {
+    font-size: 10px;
+    text-transform: capitalize;
+  }
+
+  &__compare-btn {
+    padding: $space-1_5;
+    border: none;
+    border-radius: $radius-lg;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0;
+    @include transition(color background-color opacity);
+
+    .material-card:hover & {
+      opacity: 1;
+    }
+
+    &--active {
+      opacity: 1;
+      background-color: hsl-alpha($info-h, 0.2);
+      color: $color-info;
+    }
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__compare-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+}
+
+.material-thumb {
+  border-radius: $radius-xl;
+  background-image: linear-gradient(to bottom right, #d6d3d1, #78716c);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--sm {
+    width: $space-10;
+    height: $space-10;
+  }
+
+  &--md {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  &--lg {
+    width: 100%;
+    height: $space-32;
+    border-radius: $radius-2xl $radius-2xl 0 0;
+  }
+
+  &--gradient-stone {
+    background-image: linear-gradient(to bottom right, #d6d3d1, #78716c);
+  }
+
+  &--gradient-slate {
+    background-image: linear-gradient(to bottom right, #94a3b8, #475569);
+  }
+
+  &--gradient-zinc {
+    background-image: linear-gradient(to bottom right, #a1a1aa, #52525b);
+  }
+
+  &--gradient-amber {
+    background-image: linear-gradient(to bottom right, #fcd34d, #f59e0b);
+  }
+
+  &--gradient-emerald {
+    background-image: linear-gradient(to bottom right, #6ee7b7, #10b981);
+  }
+
+  &--gradient-sky {
+    background-image: linear-gradient(to bottom right, #7dd3fc, #0ea5e9);
+  }
+
+  &--gradient-rose {
+    background-image: linear-gradient(to bottom right, #fda4af, #f43f5e);
+  }
+
+  &--gradient-indigo {
+    background-image: linear-gradient(to bottom right, #a5b4fc, #6366f1);
+  }
+
+  &--gradient-orange {
+    background-image: linear-gradient(to bottom right, #fdba74, #f97316);
+  }
+
+  &--gradient-teal {
+    background-image: linear-gradient(to bottom right, #5eead4, #14b8a6);
+  }
+
+  &__label {
+    font-size: 10px;
+    font-weight: 700;
+    color: hsl-alpha(0 0% 100%, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-left: $space-2;
+    padding-right: $space-2;
+    text-align: center;
+  }
+}

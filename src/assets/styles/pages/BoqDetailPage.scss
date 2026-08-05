@@ -1,0 +1,134 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.boq-detail-page {
+  @include page-root;
+
+  &__loading {
+    @include page-loading;
+  }
+
+  &__back-link {
+    @include page-back-link;
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    @include text-muted;
+  }
+
+  &__type-badge {
+    margin-top: $space-2;
+    text-transform: capitalize;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__action-btn {
+    @include btn-rounded-xl;
+  }
+
+  &__action-icon {
+    @include icon-sm;
+  }
+
+  &__table-content {
+    @include page-table-card-content;
+  }
+
+  &__table {
+    @include page-data-table;
+  }
+
+  &__item-name {
+    font-weight: 500;
+  }
+
+  &__item-sku {
+    font-size: 10px;
+    @include text-muted;
+  }
+
+  &__total-cell {
+    font-weight: 500;
+  }
+
+  &__summary-card {
+    height: fit-content;
+    position: sticky;
+    top: $space-24;
+
+    @include respond-to(lg) {
+      width: 20rem;
+    }
+  }
+
+  &__summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    font-size: 0.875rem;
+  }
+
+  &__summary-row {
+    @include page-summary-row;
+
+    span:first-child {
+      @include text-muted;
+    }
+  }
+
+  &__summary-total {
+    border-top: 1px solid $color-border;
+    padding-top: $space-3;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  &__summary-note {
+    font-size: 0.75rem;
+    @include text-muted;
+    padding-top: $space-2;
+    border-top: 1px solid $color-border;
+  }
+}

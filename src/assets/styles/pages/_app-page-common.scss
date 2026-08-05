@@ -1,0 +1,346 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@mixin page-root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  @include fade-in;
+}
+
+@mixin page-root-spacious {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  @include fade-in;
+}
+
+@mixin page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  font-size: 0.875rem;
+  color: $color-muted-foreground;
+  text-decoration: none;
+  @include transition(color);
+
+  &:hover {
+    color: $color-foreground;
+  }
+
+  svg {
+    width: $space-4;
+    height: $space-4;
+  }
+}
+
+@mixin page-loading {
+  padding: $space-8;
+  color: $color-muted-foreground;
+}
+
+@mixin page-grid-2-3 {
+  display: grid;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@mixin page-grid-2 {
+  display: grid;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@mixin page-grid-3 {
+  display: grid;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@mixin page-grid-4 {
+  display: grid;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@mixin page-grid-2-4 {
+  display: grid;
+  gap: $space-3;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@mixin page-callout-primary {
+  border-color: hsl-alpha($primary-h, 0.2);
+  background-color: hsl-alpha($primary-h, 0.05);
+}
+
+@mixin page-callout-content {
+  padding: $space-4;
+  display: flex;
+  gap: $space-3;
+}
+
+@mixin page-callout-icon {
+  width: $space-5;
+  height: $space-5;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+@mixin page-callout-text {
+  font-size: 0.875rem;
+}
+
+@mixin page-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@mixin page-section-header {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: $color-muted-foreground;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@mixin page-table-card-content {
+  padding: 0;
+  overflow-x: auto;
+}
+
+@mixin page-data-table {
+  width: 100%;
+  font-size: 0.8rem;
+
+  thead tr {
+    border-bottom: 1px solid $color-border;
+    background-color: hsl-alpha($muted-h, 0.35);
+    text-align: left;
+    color: $color-muted-foreground;
+  }
+
+  th,
+  td {
+    padding: $space-3 $space-3;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $color-border;
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.2);
+    }
+  }
+}
+
+@mixin page-list-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $space-3;
+  border-radius: $radius-xl;
+  border: 1px solid $color-border;
+  text-decoration: none;
+  color: inherit;
+  @include transition(background-color);
+
+  &:hover {
+    background-color: hsl-alpha($muted-h, 0.3);
+  }
+}
+
+@mixin page-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: $space-2;
+  padding-top: $space-2;
+  border-top: 1px solid $color-border;
+  text-align: center;
+}
+
+@mixin page-stat-label {
+  font-size: 10px;
+  color: $color-muted-foreground;
+}
+
+@mixin page-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-4;
+  font-size: 0.875rem;
+  color: $color-muted-foreground;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  svg {
+    width: $space-4;
+    height: $space-4;
+  }
+}
+
+@mixin page-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+@mixin page-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+@mixin page-workspace-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -$space-2;
+  margin-bottom: $space-2;
+}
+
+@mixin auth-card {
+  border: none;
+  box-shadow: none;
+
+  @include respond-to(lg) {
+    @include glass-card;
+    box-shadow: $shadow-card;
+    border: 1px solid hsl-alpha($border-h, 0.4);
+  }
+}
+
+@mixin auth-header {
+  gap: $space-1;
+}
+
+@mixin auth-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@mixin auth-form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+@mixin auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+@mixin auth-select {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: $radius-xl;
+  border: 1px solid $color-input;
+  background-color: $color-background;
+  padding: $space-2 $space-3;
+  font-size: 0.875rem;
+}
+
+@mixin auth-footer-text {
+  text-align: center;
+  font-size: 0.875rem;
+  color: $color-muted-foreground;
+
+  a {
+    color: $color-primary;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin btn-block-xl {
+  width: 100%;
+  height: $space-11;
+  border-radius: $radius-xl;
+}
+
+@mixin btn-rounded-xl {
+  border-radius: $radius-xl;
+}
+
+@mixin icon-sm {
+  width: $space-4;
+  height: $space-4;
+}
+
+@mixin icon-xs {
+  width: $space-3;
+  height: $space-3;
+}
+
+@mixin icon-md {
+  width: $space-5;
+  height: $space-5;
+}
+
+@mixin badge-xs {
+  font-size: 10px;
+}
+
+@mixin badge-capitalize {
+  text-transform: capitalize;
+}
+
+@mixin card-full-height {
+  height: 100%;
+}
+
+@mixin card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+@mixin text-muted {
+  color: $color-muted-foreground;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-tabular {
+  font-variant-numeric: tabular-nums;
+}

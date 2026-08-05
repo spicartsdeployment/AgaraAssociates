@@ -1,0 +1,133 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.contact-location {
+  padding: $space-16 $space-6;
+
+  @include respond-to(lg) {
+    padding: $space-20 $space-10;
+  }
+
+  &__grid {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    max-width: 1440px;
+    gap: $space-5;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: $space-6;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: $radius-32;
+    padding: $space-8;
+    box-shadow: $shadow-agara-soft;
+
+    @include respond-to(sm) {
+      padding: $space-10;
+    }
+
+    @include respond-to(lg) {
+      padding: $space-12;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__title {
+    margin-top: $space-3;
+    font-family: $font-serif;
+    font-size: 32px;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 42px;
+    }
+  }
+
+  &__address-row {
+    margin-top: $space-6;
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__address-icon {
+    margin-top: $space-1;
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__address-text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: $secondary-text;
+
+    @include respond-to(lg) {
+      font-size: 18px;
+    }
+  }
+
+  &__address-line {
+    display: block;
+  }
+
+  &__maps-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-8;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $agara-charcoal;
+    @include transition(color);
+
+    &:hover {
+      color: rgba($agara-charcoal, 0.7);
+    }
+  }
+
+  &__maps-icon {
+    width: 14px;
+    height: 14px;
+    @include transition(transform, 300ms);
+
+    .contact-location__maps-link:hover & {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  &__map-wrap {
+    overflow: hidden;
+    border-radius: $radius-32;
+    border: 1px solid #e7ded3;
+    box-shadow: $shadow-agara-soft;
+  }
+
+  &__map {
+    height: 320px;
+    width: 100%;
+    border: 0;
+
+    @include respond-to(lg) {
+      height: 100%;
+      min-height: 420px;
+    }
+  }
+}

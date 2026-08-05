@@ -1,0 +1,57 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.datasheet-viewer {
+  &__content {
+    max-width: 42rem;
+  }
+
+  &__body {
+    > * + * {
+      margin-top: $space-4;
+    }
+  }
+
+  &__meta {
+    border-radius: $radius-xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    padding: $space-4;
+    background-color: hsl-alpha($muted-h, 0.3);
+    font-size: 0.875rem;
+
+    > * + * {
+      margin-top: $space-2;
+    }
+  }
+
+  &__meta-label {
+    color: $color-muted-foreground;
+  }
+
+  &__meta-desc {
+    color: $color-muted-foreground;
+    padding-top: $space-2;
+  }
+
+  &__preview {
+    height: 16rem;
+    border-radius: $radius-xl;
+    border: 1px dashed hsl-alpha($border-h, 0.6);
+    background-color: hsl-alpha($surface-h, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-muted-foreground;
+    font-size: 0.875rem;
+  }
+
+  &__link-btn {
+    border-radius: $radius-xl;
+    gap: $space-1_5;
+  }
+
+  &__link-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

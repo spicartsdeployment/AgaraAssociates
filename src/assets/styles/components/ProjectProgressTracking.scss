@@ -1,0 +1,663 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+// ── CSS custom properties for the inline SVG ring ─────────────────────────────
+.ppt {
+  --ppt-color-complete: #{$color-success};
+  --ppt-color-progress: #{$color-primary};
+  --ppt-color-planned:  #{$color-border};
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ROOT
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+
+  // ── Page heading ────────────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    letter-spacing: $tracking-tight;
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+    max-width: 52rem;
+  }
+
+  // ── KPI grid ────────────────────────────────────────────────────────────
+  &__kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  // ── Ring KPI (first card — wider) ───────────────────────────────────────
+  &__kpi-ring-card {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4;
+    border-radius: $radius-xl;
+    background-color: $color-card;
+    border: 1px solid $color-border;
+    box-shadow: $shadow-card;
+    grid-column: span 2;
+
+    @include respond-to(sm) {
+      grid-column: span 1;
+    }
+
+    @include respond-to(lg) {
+      grid-column: span 2;
+    }
+  }
+
+  &__kpi-ring-body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-0_5;
+    min-width: 0;
+  }
+
+  &__kpi-ring-label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+  }
+
+  &__kpi-ring-sub {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+  }
+
+  // ── Phase accordion list ────────────────────────────────────────────────
+  &__phases {
+    display: flex;
+    flex-direction: column;
+    gap: 0; // gap is handled by the connector line rhythm
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RING SVG
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt-ring {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+
+  &__track {
+    fill: none;
+    stroke: $color-border;
+    stroke-width: 8;
+  }
+
+  &__fill {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 600ms $ease-out-expo;
+  }
+
+  &__text {
+    font-size: 1.5rem; // SVG units
+    font-weight: 700;
+    fill: $color-foreground;
+    font-family: $font-inter;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// KPI CARD
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt-kpi {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-3;
+  padding: $space-4;
+  border-radius: $radius-xl;
+  background-color: $color-card;
+  border: 1px solid $color-border;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-card;
+  }
+
+  // accent variants
+  &--primary  { border-color: hsl-alpha($primary-h, 0.3);     background-color: hsl-alpha($primary-h, 0.04); }
+  &--success  { border-color: hsl-alpha($success-h, 0.3);     background-color: hsl-alpha($success-h, 0.04); }
+  &--danger   { border-color: hsl-alpha($destructive-h, 0.35); background-color: hsl-alpha($destructive-h, 0.04); }
+
+  &__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-9;
+    height: $space-9;
+    border-radius: $radius-lg;
+    background-color: hsl-alpha($secondary-h, 0.6);
+    border: 1px solid $color-border;
+    flex-shrink: 0;
+
+    .ppt-kpi--primary & { background-color: hsl-alpha($primary-h, 0.1);     border-color: hsl-alpha($primary-h, 0.2); }
+    .ppt-kpi--success & { background-color: hsl-alpha($success-h, 0.1);     border-color: hsl-alpha($success-h, 0.2); }
+    .ppt-kpi--danger  & { background-color: hsl-alpha($destructive-h, 0.1); border-color: hsl-alpha($destructive-h, 0.2); }
+  }
+
+  &__icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-muted-foreground;
+    stroke-width: 1.75;
+
+    .ppt-kpi--primary & { color: $color-primary; }
+    .ppt-kpi--success & { color: $color-success; }
+    .ppt-kpi--danger  & { color: $color-destructive; }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-0_5;
+    min-width: 0;
+  }
+
+  &__value {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+    @include text-clamp(1);
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-muted-foreground;
+    line-height: $line-height-snug;
+  }
+
+  &__sub {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PHASE PROGRESS BAR
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt-bar {
+  height: 6px;
+  width: 100%;
+  border-radius: $radius-full;
+  background-color: hsl-alpha($border-h, 0.5);
+  overflow: hidden;
+
+  &__fill {
+    height: 100%;
+    border-radius: $radius-full;
+    transition: width 500ms $ease-out-expo;
+
+    &--planned     { background-color: $color-border; }
+    &--in_progress { background-color: $color-primary; }
+    &--completed   { background-color: $color-success; }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PHASE ROW (accordion + timeline connector)
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt-phase {
+  display: flex;
+  gap: $space-4;
+  padding-bottom: $space-4;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  // ── Timeline connector ────────────────────────────────────────────────
+  &__connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: $space-4; // aligns dot with header text
+  }
+
+  &__dot {
+    width: $space-3;
+    height: $space-3;
+    border-radius: $radius-full;
+    border: 2px solid $color-border;
+    background-color: $color-card;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: background-color $transition-base, border-color $transition-base;
+
+    &--planned     { background-color: $color-card;    border-color: $color-border; }
+    &--in_progress { background-color: $color-primary; border-color: $color-primary;
+                     box-shadow: 0 0 0 3px hsl-alpha($primary-h, 0.2); }
+    &--completed   { background-color: $color-success; border-color: $color-success; }
+  }
+
+  &__line {
+    flex: 1;
+    width: 2px;
+    background-color: $color-border;
+    margin-top: $space-1;
+    min-height: $space-8;
+
+    .ppt-phase--completed > .ppt-phase__connector > & {
+      background-color: $color-success;
+    }
+  }
+
+  // ── Phase card ────────────────────────────────────────────────────────
+  &__card {
+    flex: 1;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    background-color: $color-card;
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+    transition: box-shadow $transition-base;
+
+    &:hover {
+      box-shadow: $shadow-card;
+    }
+
+    .ppt-phase--in_progress > & {
+      border-color: hsl-alpha($primary-h, 0.35);
+      box-shadow: 0 0 0 2px hsl-alpha($primary-h, 0.1), $shadow-sm;
+    }
+
+    .ppt-phase--completed > & {
+      border-color: hsl-alpha($success-h, 0.3);
+    }
+  }
+
+  // ── Accordion header button ───────────────────────────────────────────
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $space-4 $space-5;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    gap: $space-3;
+    text-align: left;
+    transition: background-color $transition-base;
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.15);
+    }
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+    white-space: nowrap;
+  }
+
+  &__status-badge {
+    flex-shrink: 0;
+  }
+
+  &__task-count {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+    white-space: nowrap;
+  }
+
+  &__pct {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    min-width: 2.5rem;
+    text-align: right;
+    white-space: nowrap;
+
+    .ppt-phase--completed & { color: $color-success; }
+    .ppt-phase--planned   & { color: $color-muted-foreground; }
+  }
+
+  &__chevron {
+    width: $space-4;
+    height: $space-4;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+    transition: transform $transition-base;
+  }
+
+  // ── Checklist container ───────────────────────────────────────────────
+  &__checklist {
+    border-top: 1px solid $color-border;
+    padding: 0 $space-5 $space-3;
+  }
+
+  // ── Column header row ─────────────────────────────────────────────────
+  &__col-headers {
+    display: none;
+    padding: $space-2_5 0;
+    gap: $space-3;
+    border-bottom: 1px solid $color-border;
+    margin-bottom: $space-1;
+
+    @include respond-to(md) {
+      display: grid;
+      grid-template-columns: 1fr 8rem 7rem 7rem 2rem;
+    }
+  }
+
+  &__col-head {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-muted-foreground;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wide;
+
+    &--task { /* inherits flex */ }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TASK ROW
+// ─────────────────────────────────────────────────────────────────────────────
+.ppt-task {
+  border-bottom: 1px solid hsl-alpha($border-h, 0.5);
+  transition: background-color $transition-base;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: hsl-alpha($muted-h, 0.1);
+  }
+
+  &--done {
+    background-color: hsl-alpha($success-h, 0.03);
+  }
+
+  // ── Main row ────────────────────────────────────────────────────────
+  &__main {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2_5 0;
+    flex-wrap: wrap;
+
+    @include respond-to(md) {
+      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: 1.5rem 1fr 8rem 7rem 7rem 2rem;
+      gap: $space-3;
+    }
+  }
+
+  // ── Checkbox button ─────────────────────────────────────────────────
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+
+    &:focus-visible {
+      outline: 2px solid $color-ring;
+      border-radius: $radius-full;
+    }
+  }
+
+  &__status-icon {
+    width: $space-5;
+    height: $space-5;
+    stroke-width: 1.75;
+    transition: color $transition-base, transform $transition-fast;
+
+    &--planned     { color: $color-border; }
+    &--in_progress { color: $color-primary; }
+    &--completed   { color: $color-success; }
+
+    .ppt-task__checkbox:hover & {
+      transform: scale(1.15);
+    }
+  }
+
+  // ── Task label ──────────────────────────────────────────────────────
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-foreground;
+    font-weight: $font-weight-medium;
+    flex: 1;
+    min-width: 0;
+    transition: color $transition-base;
+
+    &--done {
+      text-decoration: line-through;
+      color: $color-muted-foreground;
+    }
+  }
+
+  // ── Status select ───────────────────────────────────────────────────
+  &__status-select {
+    height: 1.875rem;
+    padding: 0 $space-2;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    font-family: inherit;
+    cursor: pointer;
+    background-color: $color-background;
+    color: $color-foreground;
+    appearance: none;
+    padding-right: $space-5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23706a63' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $space-2 center;
+    transition: border-color $transition-base;
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-ring;
+      box-shadow: 0 0 0 2px hsl-alpha($ring-h, 0.2);
+    }
+
+    &--planned     { border-color: $color-border; color: $color-muted-foreground; }
+    &--in_progress { border-color: hsl-alpha($primary-h, 0.5);     color: $color-primary; }
+    &--completed   { border-color: hsl-alpha($success-h, 0.5);     color: $color-success;
+                     background-color: hsl-alpha($success-h, 0.05); }
+  }
+
+  // ── Date inputs ─────────────────────────────────────────────────────
+  &__date-input {
+    height: 1.875rem;
+    padding: 0 $space-2;
+    border-radius: $radius-lg;
+    border: 1px solid $color-border;
+    font-size: $font-size-xs;
+    font-family: inherit;
+    background-color: $color-background;
+    color: $color-foreground;
+    min-width: 0;
+    width: 100%;
+    transition: border-color $transition-base;
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-ring;
+      box-shadow: 0 0 0 2px hsl-alpha($ring-h, 0.2);
+    }
+
+    // Hide on mobile to keep row compact; revealed in detail panel
+    display: none;
+
+    @include respond-to(md) {
+      display: block;
+    }
+  }
+
+  // ── Expand toggle ────────────────────────────────────────────────────
+  &__expand-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-6;
+    height: $space-6;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color $transition-base, border-color $transition-base;
+
+    &:hover {
+      background-color: hsl-alpha($primary-h, 0.08);
+      border-color: hsl-alpha($primary-h, 0.3);
+    }
+  }
+
+  &__expand-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+    color: $color-muted-foreground;
+  }
+
+  // ── Expanded detail panel ────────────────────────────────────────────
+  &__detail {
+    padding: $space-3 0 $space-3 $space-7;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    animation: ppt-expand 200ms ease-out;
+  }
+
+  &__remarks {
+    width: 100%;
+    padding: $space-2_5 $space-3;
+    border-radius: $radius-lg;
+    border: 1px solid $color-border;
+    font-size: $font-size-sm;
+    font-family: inherit;
+    background-color: $color-background;
+    color: $color-foreground;
+    resize: vertical;
+    line-height: $line-height-normal;
+    transition: border-color $transition-base;
+
+    &::placeholder { color: $color-muted-foreground; }
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-ring;
+      box-shadow: 0 0 0 2px hsl-alpha($ring-h, 0.15);
+    }
+  }
+
+  &__uploads {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-1_5 $space-3;
+    border-radius: $radius-full;
+    border: 1.5px dashed $color-border;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    cursor: pointer;
+    transition: border-color $transition-base, background-color $transition-base;
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.5);
+      background-color: hsl-alpha($primary-h, 0.05);
+    }
+
+    &--doc {
+      color: $color-muted-foreground;
+
+      &:hover {
+        color: $color-foreground;
+        border-color: $color-border;
+        background-color: hsl-alpha($muted-h, 0.1);
+      }
+    }
+  }
+
+  &__upload-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+    flex-shrink: 0;
+  }
+
+  &__file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+// ─── Expand animation ─────────────────────────────────────────────────────────
+@keyframes ppt-expand {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

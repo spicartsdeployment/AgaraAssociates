@@ -1,0 +1,1596 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@keyframes pcw-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-creation-wizard {
+  max-width: 52rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  padding-bottom: $space-12;
+  animation: pcw-fade-in 400ms ease-out;
+
+  // ── Back link ─────────────────────────────────────────────────────────
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    text-decoration: none;
+    width: fit-content;
+    @include transition(color);
+
+    &:hover {
+      color: $color-foreground;
+    }
+  }
+
+  &__back-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+  }
+
+  // ── Page header ───────────────────────────────────────────────────────
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__title {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    letter-spacing: $tracking-tight;
+    line-height: $line-height-snug;
+
+    @include respond-to(sm) {
+      font-size: $font-size-3xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+  }
+
+  // ── Step badges ───────────────────────────────────────────────────────
+  &__steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__step-badge {
+    border-radius: $radius-full;
+    padding: $space-1 $space-3;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+  }
+
+  // ── Form card ─────────────────────────────────────────────────────────
+  &__card {
+    // Slight lift so the card stands out from the page bg
+    box-shadow: $shadow-card;
+  }
+
+  // ── Form layout ───────────────────────────────────────────────────────
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+  }
+
+  &__form-row {
+    display: grid;
+    gap: $space-5;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  // ── Individual field ──────────────────────────────────────────────────
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    &--full {
+      // Full-width field sits outside any 2-col row, already full width
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-foreground;
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__required {
+    color: $color-destructive;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+  }
+
+  &__optional {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+    font-weight: $font-weight-normal;
+  }
+
+  // ── Inputs ────────────────────────────────────────────────────────────
+  &__input,
+  &__select,
+  &__textarea {
+    width: 100%;
+    border-radius: $radius-xl;
+    font-size: $font-size-sm;
+    color: $color-foreground;
+    border: 1px solid $color-border;
+    background-color: $color-background;
+    @include transition(border-color box-shadow);
+
+    &::placeholder {
+      color: $color-muted-foreground;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: $color-ring;
+      box-shadow: 0 0 0 3px hsl-alpha($ring-h, 0.15);
+    }
+  }
+
+  &__input,
+  &__select {
+    height: 2.625rem; // 42px — slightly taller than default for comfort
+    padding: 0 $space-3;
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%23706a63' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right $space-3 center;
+    padding-right: $space-9;
+    cursor: pointer;
+  }
+
+  &__textarea {
+    padding: $space-3;
+    resize: vertical;
+    min-height: 6rem;
+    line-height: $line-height-normal;
+  }
+
+  // ── Placeholder for future steps ──────────────────────────────────────
+  &__placeholder {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    padding: $space-8 0;
+    text-align: center;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // STEP 2 — SERVICE SELECTION
+  // ══════════════════════════════════════════════════════════════════════
+
+  &__services-section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  // ── Service card grid ─────────────────────────────────────────────────
+  &__services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-4;
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  // ── Individual service card ───────────────────────────────────────────
+  &__service-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-5;
+    border-radius: $radius-3xl;
+    border: 1.5px solid $color-border;
+    background-color: $color-card;
+    box-shadow: $shadow-sm;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    // Reset browser button defaults
+    font-family: inherit;
+    color: $color-foreground;
+    transition:
+      border-color $transition-base,
+      box-shadow $transition-base,
+      transform $transition-base,
+      background-color $transition-base;
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.5);
+      box-shadow: $shadow-card;
+      transform: translateY(-2px);
+      background-color: hsl-alpha($card-h, 0.8);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px hsl-alpha($ring-h, 0.25);
+    }
+
+    // Selected state
+    &--selected {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.06);
+      box-shadow: 0 0 0 1px hsl-alpha($primary-h, 0.3), $shadow-card;
+      transform: translateY(-2px) scale(1.01);
+
+      &:hover {
+        border-color: $color-primary;
+        background-color: hsl-alpha($primary-h, 0.08);
+        transform: translateY(-3px) scale(1.01);
+      }
+    }
+  }
+
+  // ── Check badge (top-right corner) ────────────────────────────────────
+  &__service-check {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-6;
+    height: $space-6;
+    border-radius: $radius-full;
+    background-color: $color-border;
+    border: 1.5px solid $color-border;
+    opacity: 0;
+    transform: scale(0.6);
+    transition:
+      opacity $transition-base,
+      transform $transition-base,
+      background-color $transition-base,
+      border-color $transition-base;
+
+    &--visible {
+      opacity: 1;
+      transform: scale(1);
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+  }
+
+  &__service-check-icon {
+    width: $space-3;
+    height: $space-3;
+    color: $color-primary-foreground;
+    stroke-width: 3;
+  }
+
+  // ── Service icon wrapper ──────────────────────────────────────────────
+  &__service-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-12;
+    height: $space-12;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($secondary-h, 0.6);
+    border: 1px solid $color-border;
+    flex-shrink: 0;
+    transition:
+      background-color $transition-base,
+      border-color $transition-base,
+      box-shadow $transition-base;
+
+    &--selected {
+      background-color: hsl-alpha($primary-h, 0.12);
+      border-color: hsl-alpha($primary-h, 0.3);
+      box-shadow: 0 0 0 4px hsl-alpha($primary-h, 0.08);
+    }
+  }
+
+  &__service-icon {
+    width: $space-6;
+    height: $space-6;
+    color: $color-primary;
+    stroke-width: 1.5;
+    transition: transform $transition-base;
+
+    .project-creation-wizard__service-card:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  // ── Service text ──────────────────────────────────────────────────────
+  &__service-name {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+
+    .project-creation-wizard__service-card--selected & {
+      color: $color-primary;
+    }
+  }
+
+  &__service-desc {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+    @include text-clamp(3);
+  }
+
+  // ── Selected services summary bar ─────────────────────────────────────
+  &__selected-summary {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1_5;
+    padding: $space-4 $space-5;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($primary-h, 0.06);
+    border: 1px solid hsl-alpha($primary-h, 0.2);
+    animation: pcw-fade-in 250ms ease-out;
+  }
+
+  &__selected-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-foreground;
+  }
+
+  &__selected-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $space-5;
+    height: $space-5;
+    padding: 0 $space-1_5;
+    border-radius: $radius-full;
+    background-color: $color-primary;
+    color: $color-primary-foreground;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+  }
+
+  &__selected-list {
+    font-size: $font-size-sm;
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+  }
+
+  // ── Workflow preview ──────────────────────────────────────────────────
+  &__workflow {
+    padding: $space-6;
+    border-radius: $radius-xl;
+    background-color: $color-card;
+    border: 1px solid $color-border;
+    box-shadow: $shadow-sm;
+    animation: pcw-fade-in 300ms ease-out;
+  }
+
+  &__workflow-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    margin-bottom: $space-5;
+  }
+
+  &__workflow-tracks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-6;
+  }
+
+  &__workflow-track {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    min-width: 9rem;
+  }
+
+  &__workflow-service {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    padding-bottom: $space-2;
+    border-bottom: 2px solid hsl-alpha($primary-h, 0.25);
+  }
+
+  &__workflow-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0; // gaps handled by the node/arrow rhythm
+  }
+
+  &__workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__workflow-node {
+    display: inline-flex;
+    padding: $space-1_5 $space-3;
+    border-radius: $radius-full;
+    background-color: hsl-alpha($secondary-h, 0.5);
+    border: 1px solid $color-border;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-foreground;
+    white-space: nowrap;
+    transition: background-color $transition-fast, border-color $transition-fast;
+  }
+
+  &__workflow-arrow {
+    display: block;
+    padding: $space-0_5 0 $space-0_5 $space-3;
+    font-size: $font-size-sm;
+    color: hsl-alpha($primary-h, 0.5);
+    line-height: 1;
+    user-select: none;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // STEP 3 — CONSTRUCTION AGREEMENT
+  // ══════════════════════════════════════════════════════════════════════
+
+  &__agreement-section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  // ── Package selection header ──────────────────────────────────────────
+  &__pkg-header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__pkg-heading {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+  }
+
+  &__pkg-subheading {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+  }
+
+  // ── Package grid ──────────────────────────────────────────────────────
+  &__pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  // ── Individual package card ───────────────────────────────────────────
+  &__pkg-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-4;
+    padding: $space-6;
+    border-radius: $radius-3xl;
+    border: 2px solid $color-border;
+    background-color: $color-card;
+    box-shadow: $shadow-sm;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    font-family: inherit;
+    color: $color-foreground;
+    transition:
+      border-color $transition-base,
+      box-shadow $transition-base,
+      transform $transition-base,
+      background-color $transition-base;
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.6);
+      box-shadow: $shadow-card;
+      transform: translateY(-3px);
+    }
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px hsl-alpha($ring-h, 0.25);
+    }
+
+    &--selected {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.04);
+      box-shadow: 0 0 0 2px hsl-alpha($primary-h, 0.25), $shadow-card-hover;
+      transform: translateY(-3px) scale(1.01);
+    }
+
+    // Color variants
+    &--teal:hover {
+      border-color: hsl(180 40% 50% / 1);
+    }
+
+    &--teal.project-creation-wizard__pkg-card--selected {
+      border-color: hsl(180 40% 50% / 1);
+      background-color: hsl(180 40% 50% / 0.06);
+    }
+
+    &--gold:hover {
+      border-color: hsl($gold-h);
+    }
+
+    &--gold.project-creation-wizard__pkg-card--selected {
+      border-color: hsl($gold-h);
+      background-color: hsl-alpha($gold-h, 0.06);
+      box-shadow: 0 0 0 2px hsl-alpha($gold-h, 0.25), $shadow-card-hover;
+    }
+  }
+
+  // ── Package badge (top-right) ─────────────────────────────────────────
+  &__pkg-badge {
+    position: absolute;
+    top: $space-4;
+    right: $space-4;
+    padding: $space-1 $space-2_5;
+    border-radius: $radius-full;
+    background-color: $color-primary;
+    color: $color-primary-foreground;
+    font-size: 10px;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+
+    .project-creation-wizard__pkg-card--gold & {
+      background-color: hsl($gold-h);
+      color: $color-primary-foreground;
+    }
+  }
+
+  // ── Package check (top-left) ──────────────────────────────────────────
+  &__pkg-check {
+    position: absolute;
+    top: $space-4;
+    left: $space-4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-7;
+    height: $space-7;
+    border-radius: $radius-full;
+    background-color: $color-border;
+    border: 2px solid $color-border;
+    opacity: 0;
+    transform: scale(0.7);
+    transition:
+      opacity $transition-base,
+      transform $transition-base,
+      background-color $transition-base,
+      border-color $transition-base;
+
+    &--visible {
+      opacity: 1;
+      transform: scale(1);
+      background-color: $color-primary;
+      border-color: $color-primary;
+
+      .project-creation-wizard__pkg-card--gold & {
+        background-color: hsl($gold-h);
+        border-color: hsl($gold-h);
+      }
+    }
+  }
+
+  &__pkg-check-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-primary-foreground;
+    stroke-width: 3;
+  }
+
+  // ── Package text ──────────────────────────────────────────────────────
+  &__pkg-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+    padding-top: $space-2;
+  }
+
+  &__pkg-rate {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    line-height: 1.1;
+
+    .project-creation-wizard__pkg-card--gold & {
+      color: hsl($gold-h);
+    }
+  }
+
+  &__pkg-unit {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-muted-foreground;
+    margin-left: $space-0_5;
+  }
+
+  &__pkg-tagline {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+    font-style: italic;
+  }
+
+  // ── Package highlights list ───────────────────────────────────────────
+  &__pkg-highlights {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    width: 100%;
+  }
+
+  &__pkg-highlight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-1_5;
+    font-size: $font-size-xs;
+    color: $color-foreground;
+    line-height: $line-height-normal;
+  }
+
+  &__pkg-highlight-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+    color: $color-primary;
+    flex-shrink: 0;
+    margin-top: 1px;
+
+    .project-creation-wizard__pkg-card--gold & {
+      color: hsl($gold-h);
+    }
+  }
+
+  // ── View Agreement button ─────────────────────────────────────────────
+  &__pkg-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1_5;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    border: 1.5px solid $color-border;
+    background-color: transparent;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+      background-color $transition-base,
+      border-color $transition-base,
+      color $transition-base;
+    margin-top: auto;
+
+    &:hover {
+      background-color: hsl-alpha($primary-h, 0.08);
+      border-color: $color-primary;
+    }
+
+    .project-creation-wizard__pkg-card--gold & {
+      color: hsl($gold-h);
+
+      &:hover {
+        background-color: hsl-alpha($gold-h, 0.08);
+        border-color: hsl($gold-h);
+      }
+    }
+  }
+
+  &__pkg-view-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+    flex-shrink: 0;
+  }
+
+  // ── Agreement form: 3-column row ──────────────────────────────────────
+  &__form-row--3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  // ── Readonly field ────────────────────────────────────────────────────
+  &__readonly-field {
+    display: flex;
+    align-items: center;
+    min-height: 2.625rem;
+    padding: 0 $space-3;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    background-color: hsl-alpha($secondary-h, 0.3);
+    font-size: $font-size-sm;
+    color: $color-foreground;
+    font-weight: $font-weight-medium;
+  }
+
+  &__readonly-placeholder {
+    color: $color-muted-foreground;
+    font-weight: $font-weight-normal;
+  }
+
+  // ── Approx cost banner ────────────────────────────────────────────────
+  &__cost-banner {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding: $space-4 $space-5;
+    border-radius: $radius-xl;
+    background: linear-gradient(135deg, hsl-alpha($primary-h, 0.06), hsl-alpha($primary-h, 0.10));
+    border: 1.5px solid hsl-alpha($primary-h, 0.25);
+    animation: pcw-fade-in 300ms ease-out;
+  }
+
+  &__cost-label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-muted-foreground;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+  }
+
+  &__cost-value {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    line-height: 1.1;
+  }
+
+  &__cost-note {
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+    font-style: italic;
+  }
+
+  // ── Agreement options: template / upload ──────────────────────────────
+  &__agreement-options {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__template-btn {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-4;
+    border-radius: $radius-xl;
+    border: 1.5px solid $color-border;
+    background-color: $color-card;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition:
+      border-color $transition-base,
+      background-color $transition-base,
+      box-shadow $transition-base;
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.5);
+      background-color: hsl-alpha($primary-h, 0.03);
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.06);
+      box-shadow: 0 0 0 3px hsl-alpha($primary-h, 0.15);
+    }
+
+    strong {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-foreground;
+      margin-bottom: $space-0_5;
+    }
+
+    small {
+      display: block;
+      font-size: $font-size-xs;
+      color: $color-muted-foreground;
+      line-height: $line-height-normal;
+    }
+  }
+
+  &__template-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__template-check {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  &__agreement-divider {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    color: $color-muted-foreground;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: $color-border;
+    }
+  }
+
+  &__upload-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-4;
+    border-radius: $radius-xl;
+    border: 1.5px dashed $color-border;
+    background-color: $color-card;
+    cursor: pointer;
+    text-align: left;
+    transition:
+      border-color $transition-base,
+      background-color $transition-base;
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.5);
+      background-color: hsl-alpha($primary-h, 0.03);
+    }
+
+    &--has-file {
+      border-style: solid;
+      border-color: $color-success;
+      background-color: hsl-alpha($success-h, 0.05);
+    }
+
+    strong {
+      display: block;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-semibold;
+      color: $color-foreground;
+      margin-bottom: $space-0_5;
+    }
+
+    small {
+      display: block;
+      font-size: $font-size-xs;
+      color: $color-muted-foreground;
+      line-height: $line-height-normal;
+    }
+  }
+
+  &__upload-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+    flex-shrink: 0;
+    margin-top: 2px;
+
+    .project-creation-wizard__upload-btn--has-file & {
+      color: $color-success;
+    }
+  }
+
+  &__file-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  // ══════════════════════════════════════════════════════════════════════
+  // STEP 4 — REVIEW & CREATE
+  // ══════════════════════════════════════════════════════════════════════
+}
+
+// ── Review section lives outside the wizard class for clean BEM ──────────────
+.pcw-review {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+
+  // ── Individual review section card ────────────────────────────────────
+  &__section {
+    background-color: $color-card;
+    border: 1px solid $color-border;
+    border-radius: $radius-3xl;
+    box-shadow: $shadow-card;
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    animation: pcw-fade-in 350ms ease-out;
+  }
+
+  // ── Section header row (title + edit button) ──────────────────────────
+  &__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+  }
+
+  &__section-title-row {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__section-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-9;
+    height: $space-9;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($primary-h, 0.1);
+    border: 1px solid hsl-alpha($primary-h, 0.2);
+    flex-shrink: 0;
+  }
+
+  &__section-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-primary;
+    stroke-width: 2;
+  }
+
+  &__section-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+  }
+
+  // ── Edit button ───────────────────────────────────────────────────────
+  &__edit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1_5;
+    padding: $space-1_5 $space-3;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    color: $color-muted-foreground;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color $transition-base, border-color $transition-base, color $transition-base;
+
+    &:hover {
+      background-color: hsl-alpha($primary-h, 0.06);
+      border-color: hsl-alpha($primary-h, 0.4);
+      color: $color-primary;
+    }
+  }
+
+  &__edit-icon {
+    width: $space-3;
+    height: $space-3;
+    flex-shrink: 0;
+  }
+
+  // ── Basic info 2-col grid ─────────────────────────────────────────────
+  &__info-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: $space-4;
+    padding: $space-1 0;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    &--full {
+      @include respond-to(sm) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__info-label {
+    display: flex;
+    align-items: center;
+    gap: $space-1_5;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-muted-foreground;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__info-label-icon {
+    width: $space-3;
+    height: $space-3;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  &__info-value {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-foreground;
+    line-height: $line-height-normal;
+
+    &--badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: $space-1 $space-3;
+      border-radius: $radius-full;
+      background-color: hsl-alpha($secondary-h, 0.6);
+      border: 1px solid $color-border;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semibold;
+      color: $color-foreground;
+    }
+
+    &--muted {
+      color: $color-body;
+      font-weight: $font-weight-normal;
+    }
+  }
+
+  // ── Service chips ─────────────────────────────────────────────────────
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    border-radius: $radius-full;
+    background-color: hsl-alpha($primary-h, 0.08);
+    border: 1.5px solid hsl-alpha($primary-h, 0.25);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-primary;
+  }
+
+  &__chip-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+    stroke-width: 1.75;
+  }
+
+  &__chip-check {
+    width: $space-3_5;
+    height: $space-3_5;
+    flex-shrink: 0;
+    stroke-width: 3;
+    color: $color-success;
+  }
+
+  // ── Service config blocks ─────────────────────────────────────────────
+  &__config-block {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    padding: $space-5;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($secondary-h, 0.25);
+    border: 1px solid $color-border;
+
+    &+& {
+      margin-top: $space-1;
+    }
+  }
+
+  &__config-header {
+    display: flex;
+    align-items: center;
+    gap: $space-2_5;
+  }
+
+  &__config-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+    flex-shrink: 0;
+    stroke-width: 1.75;
+  }
+
+  &__config-service {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__config-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__config-item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    &--full {
+      @include respond-to(sm) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__config-label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-muted-foreground;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  &__config-value {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-foreground;
+
+    &--pkg {
+      display: inline-flex;
+      width: fit-content;
+      padding: $space-1 $space-3;
+      border-radius: $radius-full;
+      background-color: hsl-alpha($primary-h, 0.1);
+      border: 1px solid hsl-alpha($primary-h, 0.25);
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+    }
+
+    &--teal {
+      color: hsl(180 40% 45%);
+      background-color: hsl(180 40% 45% / 0.1);
+      border-color: hsl(180 40% 45% / 0.3);
+    }
+
+    &--gold {
+      color: hsl($gold-h);
+      background-color: hsl-alpha($gold-h, 0.1);
+      border-color: hsl-alpha($gold-h, 0.3);
+    }
+
+    &--highlight {
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      color: $color-primary;
+    }
+
+    &--doc {
+      display: inline-flex;
+      align-items: center;
+      gap: $space-1_5;
+    }
+
+    &--missing {
+      color: $color-destructive;
+      font-style: italic;
+    }
+
+    &--muted {
+      color: $color-body;
+      font-weight: $font-weight-normal;
+    }
+  }
+
+  &__doc-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  &__config-note {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+    font-style: italic;
+  }
+
+  // ── Confirmation checkbox ─────────────────────────────────────────────
+  &__confirm-block {
+    padding: $space-5 $space-6;
+    border-radius: $radius-xl;
+    background-color: $color-card;
+    border: 1.5px solid $color-border;
+    box-shadow: $shadow-sm;
+  }
+
+  &__confirm-label {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity $transition-base;
+
+    &--checked {
+      .pcw-review__confirm-text {
+        color: $color-foreground;
+      }
+    }
+  }
+
+  &__confirm-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-5;
+    height: $space-5;
+    border-radius: $radius-md;
+    border: 2px solid $color-border;
+    background-color: $color-background;
+    flex-shrink: 0;
+    margin-top: 2px;
+    transition:
+      border-color $transition-base,
+      background-color $transition-base;
+
+    &--checked {
+      border-color: $color-primary;
+      background-color: $color-primary;
+    }
+  }
+
+  &__confirm-check {
+    width: $space-3;
+    height: $space-3;
+    color: $color-primary-foreground;
+    stroke-width: 3;
+  }
+
+  &__confirm-input {
+    @include sr-only;
+  }
+
+  &__confirm-text {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+    transition: color $transition-base;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// AGREEMENT MODAL (sits outside main wizard class)
+// ══════════════════════════════════════════════════════════════════════════
+
+.pcw-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $space-4;
+  animation: pcw-fade-in 200ms ease-out;
+  overflow-y: auto;
+}
+
+.pcw-modal {
+  position: relative;
+  max-width: 56rem;
+  width: 100%;
+  max-height: 90vh;
+  background-color: $color-card;
+  border-radius: $radius-3xl;
+  box-shadow: $shadow-glass;
+  border: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  animation: pcw-fade-in 250ms ease-out 100ms both;
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-6;
+    border-bottom: 1px solid $color-border;
+    flex-shrink: 0;
+  }
+
+  &__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    min-width: 0;
+  }
+
+  &__company {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-heading;
+    line-height: $line-height-snug;
+  }
+
+  &__note {
+    font-size: $font-size-xs;
+    color: $color-destructive;
+    font-style: italic;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $space-8;
+    height: $space-8;
+    border-radius: $radius-full;
+    border: 1px solid $color-border;
+    background-color: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color $transition-base, border-color $transition-base;
+
+    &:hover {
+      background-color: $color-muted;
+      border-color: hsl-alpha($border-h, 0.8);
+    }
+  }
+
+  &__close-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-foreground;
+  }
+
+  &__body {
+    padding: $space-6;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__section-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $color-heading;
+    padding-bottom: $space-2;
+    border-bottom: 2px solid hsl-alpha($primary-h, 0.25);
+  }
+
+  &__table {
+    width: 100%;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    font-size: $font-size-sm;
+
+    thead {
+      background-color: hsl-alpha($muted-h, 0.3);
+    }
+  }
+
+  &__th {
+    padding: $space-2_5 $space-3;
+    text-align: left;
+    font-weight: $font-weight-semibold;
+    color: $color-foreground;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__tr {
+    border-bottom: 1px solid $color-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.15);
+    }
+  }
+
+  &__td {
+    padding: $space-2 $space-3;
+    color: $color-foreground;
+
+    &--item {
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__milestones {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(md) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__milestone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-2_5 $space-3;
+    border-radius: $radius-lg;
+    background-color: hsl-alpha($secondary-h, 0.4);
+    border: 1px solid $color-border;
+    font-size: $font-size-xs;
+  }
+
+  &__milestone-label {
+    font-weight: $font-weight-medium;
+    color: $color-foreground;
+  }
+
+  &__milestone-pct {
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    font-size: $font-size-sm;
+  }
+
+  &__footer-note {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1_5;
+    padding: $space-4;
+    border-radius: $radius-lg;
+    background-color: hsl-alpha($warning-h, 0.08);
+    border: 1px solid hsl-alpha($warning-h, 0.25);
+    font-size: $font-size-xs;
+    color: $color-muted-foreground;
+    line-height: $line-height-normal;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-2;
+    padding: $space-4 $space-6;
+    border-top: 1px solid $color-border;
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    border-radius: $radius-xl;
+  }
+}

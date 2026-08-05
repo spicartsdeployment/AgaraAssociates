@@ -1,0 +1,125 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.site-progress-page {
+  @include page-root;
+
+  &__callout {
+    @include page-callout-primary;
+  }
+
+  &__callout-content {
+    @include page-callout-content;
+  }
+
+  &__callout-icon {
+    @include page-callout-icon;
+  }
+
+  &__callout-text {
+    @include page-callout-text;
+  }
+
+  &__tab-content {
+    margin-top: $space-6;
+  }
+
+  &__tab-content--stack {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__photo-grid {
+    @include page-grid-4;
+  }
+
+  &__photo-card {
+    overflow: hidden;
+  }
+
+  &__photo-placeholder {
+    height: 10rem;
+    background: linear-gradient(to bottom right, #e2e8f0, #cbd5e1);
+  }
+
+  &__photo-content {
+    padding: $space-3;
+  }
+
+  &__photo-caption {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  &__photo-date {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+
+  &__log-content {
+    padding: $space-4;
+    display: flex;
+    gap: $space-4;
+  }
+
+  &__log-date {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  &__log-day {
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  &__log-month {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+
+  &__log-summary {
+    font-size: 0.875rem;
+  }
+
+  &__log-workers {
+    font-size: 0.75rem;
+    @include text-muted;
+    margin-top: $space-1;
+  }
+
+  &__issue-content {
+    padding: $space-4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__issue-title {
+    font-weight: 500;
+  }
+
+  &__issue-badges {
+    display: flex;
+    gap: $space-2;
+  }
+
+  &__stats-grid {
+    @include page-grid-3;
+  }
+
+  &__stat-title {
+    font-size: 1rem;
+  }
+
+  &__stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__stat-label {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+}

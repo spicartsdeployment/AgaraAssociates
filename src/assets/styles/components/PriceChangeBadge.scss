@@ -1,0 +1,32 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.price-change-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  border-radius: $radius-lg;
+  padding: $space-0_5 $space-2;
+  font-size: $space-3;
+  font-weight: 500;
+
+  &--up {
+    background-color: hsl-alpha($destructive-h, 0.1);
+    color: $color-destructive;
+  }
+
+  &--down {
+    background-color: hsl-alpha($success-h, 0.1);
+    color: $color-success;
+  }
+
+  &--neutral {
+    background-color: $color-muted;
+    color: $color-muted-foreground;
+  }
+
+  &__icon {
+    width: $space-3;
+    height: $space-3;
+  }
+}

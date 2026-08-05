@@ -1,0 +1,102 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.calendar-page {
+  @include page-root;
+
+  &__callout {
+    @include page-callout-primary;
+  }
+
+  &__callout-content {
+    @include page-callout-content;
+  }
+
+  &__callout-icon {
+    @include page-callout-icon;
+  }
+
+  &__callout-text {
+    @include page-callout-text;
+  }
+
+  &__timeline {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__day-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: $space-3;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+
+    svg {
+      @include icon-sm;
+      @include text-muted;
+    }
+  }
+
+  &__events {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__event-content {
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__event-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__event-title {
+    font-weight: 500;
+  }
+
+  &__event-type {
+    @include badge-xs;
+  }
+
+  &__event-project {
+    font-size: 0.75rem;
+    @include text-muted;
+    margin-top: $space-1;
+  }
+
+  &__event-location {
+    font-size: 0.75rem;
+    @include text-muted;
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-top: $space-1;
+
+    svg {
+      @include icon-xs;
+    }
+  }
+
+  &__event-time {
+    font-size: 0.875rem;
+    font-weight: 500;
+    @include text-tabular;
+  }
+}

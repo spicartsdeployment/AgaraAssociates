@@ -1,0 +1,95 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@keyframes skeleton-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  border-radius: $radius-xl;
+  background-color: $color-muted;
+
+  &--h-4 {
+    height: $space-4;
+  }
+
+  &--h-8 {
+    height: $space-8;
+  }
+
+  &--h-10 {
+    height: 2.5rem;
+  }
+
+  &--h-11 {
+    height: 2.75rem;
+  }
+
+  &--h-12 {
+    height: 3rem;
+  }
+
+  &--h-24 {
+    height: 6rem;
+  }
+
+  &--h-28 {
+    height: 7rem;
+  }
+
+  &--h-36 {
+    height: 9rem;
+  }
+
+  &--h-64 {
+    height: 16rem;
+  }
+
+  &--h-300 {
+    height: 300px;
+  }
+
+  &--h-520 {
+    height: 520px;
+  }
+
+  &--w-48 {
+    width: 12rem;
+  }
+
+  &--w-56 {
+    width: 14rem;
+  }
+
+  &--w-72 {
+    width: 18rem;
+  }
+
+  &--w-full {
+    width: 100%;
+  }
+
+  &--rounded-none {
+    border-radius: 0;
+  }
+
+  &--rounded-xl {
+    border-radius: $radius-xl;
+  }
+
+  &--rounded-2xl {
+    border-radius: $radius-2xl;
+  }
+
+  &--border-t {
+    border-top: 1px solid hsl-alpha($border-h, 0.3);
+  }
+}

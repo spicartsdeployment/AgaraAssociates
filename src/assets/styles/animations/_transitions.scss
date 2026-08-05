@@ -1,0 +1,26 @@
+@use "../base/variables" as *;
+
+// Shared transition tokens as utility classes (opt-in; no visual change unless applied)
+
+.u-transition {
+  transition: all $transition-base;
+}
+
+.u-transition-fast {
+  transition: all $transition-fast;
+}
+
+.u-transition-slow {
+  transition: all $transition-slow;
+}
+
+.u-transition-colors {
+  transition:
+    color $transition-base,
+    background-color $transition-base,
+    border-color $transition-base;
+}
+
+.u-transition-transform {
+  transition: transform $transition-base;
+}

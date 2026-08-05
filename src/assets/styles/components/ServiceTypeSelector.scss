@@ -1,0 +1,108 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.service-type-selector {
+  display: grid;
+  gap: $space-3;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  &__option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-2;
+    border-radius: $radius-2xl;
+    border: 1px solid $color-border;
+    padding: $space-4;
+    text-align: left;
+    @include transition(all, $transition-base);
+
+    &:hover {
+      border-color: hsl-alpha($primary-h, 0.3);
+      background-color: hsl-alpha($muted-h, 0.5);
+    }
+
+    &--selected {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.05);
+      box-shadow: $shadow-sm;
+      outline: 1px solid hsl-alpha($primary-h, 0.2);
+    }
+
+    &--selected#{&}--construction {
+      border-color: $color-secondary;
+      background-color: hsl-alpha($secondary-h, 0.05);
+      outline-color: hsl-alpha($secondary-h, 0.2);
+    }
+  }
+
+  &__check {
+    position: absolute;
+    top: $space-3;
+    right: $space-3;
+    display: flex;
+    height: $space-5;
+    width: $space-5;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background-color: $color-primary;
+    color: $color-primary-foreground;
+
+    &--construction {
+      background-color: $color-secondary;
+      color: $color-primary-foreground;
+    }
+  }
+
+  &__check-icon {
+    width: $space-3;
+    height: $space-3;
+  }
+
+  &__icon-wrap {
+    display: flex;
+    height: $space-10;
+    width: $space-10;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background-color: $color-muted;
+    color: $color-muted-foreground;
+
+    &--selected {
+      background-color: hsl-alpha($primary-h, 0.15);
+      color: $color-primary;
+    }
+
+    &--selected#{&}--construction {
+      background-color: hsl-alpha($secondary-h, 0.15);
+      color: $color-secondary;
+    }
+  }
+
+  &__option-icon {
+    width: $space-5;
+    height: $space-5;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__description {
+    margin-top: $space-0_5;
+    font-size: $space-3;
+    line-height: 1.625;
+    color: $color-muted-foreground;
+  }
+}

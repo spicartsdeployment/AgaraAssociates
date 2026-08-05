@@ -1,0 +1,138 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.contact-main {
+  scroll-margin-top: 7rem;
+  padding: 0 $space-6 $space-8;
+
+  @include respond-to(lg) {
+    padding-left: $space-10;
+    padding-right: $space-10;
+  }
+
+  &__grid {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    max-width: 1440px;
+    gap: $space-5;
+
+    @include respond-to(lg) {
+      grid-template-columns: 2fr 3fr;
+      gap: $space-6;
+    }
+  }
+
+  &__aside,
+  &__form-panel {
+    border-radius: $radius-32;
+    padding: $space-8;
+    box-shadow: $shadow-agara-soft;
+
+    @include respond-to(sm) {
+      padding: $space-10;
+    }
+  }
+
+  &__label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba($agara-charcoal, 0.5);
+  }
+
+  &__section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__heading {
+    margin-top: $space-3;
+    font-family: $font-serif;
+    font-size: 28px;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 32px;
+    }
+  }
+
+  &__info-list {
+    margin-top: $space-8;
+
+    > li + li {
+      margin-top: $space-6;
+    }
+  }
+
+  &__info-item {
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__info-icon {
+    margin-top: 2px;
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__info-text {
+    margin-top: $space-1;
+    font-size: 15px;
+    color: $secondary-text;
+  }
+
+  &__info-text--relaxed {
+    line-height: 1.625;
+  }
+
+  &__info-line {
+    display: block;
+  }
+
+  &__info-link {
+    display: block;
+    margin-top: $space-1;
+    font-size: 15px;
+    color: $secondary-text;
+    @include transition(color);
+
+    &:hover {
+      color: $agara-charcoal;
+    }
+  }
+
+  &__socials {
+    margin-top: $space-10;
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__social-link {
+    @include flex-center;
+    width: $space-10;
+    height: $space-10;
+    border-radius: $radius-full;
+    border: 1px solid #e7ded3;
+    background: rgba(255, 255, 255, 0.4);
+    color: rgba($agara-charcoal, 0.65);
+    @include transition(color);
+
+    &:hover {
+      color: $agara-charcoal;
+    }
+  }
+
+  &__social-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

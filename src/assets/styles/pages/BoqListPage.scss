@@ -1,0 +1,13 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.boq-list-page {
+  &__loading {
+    @include page-loading;
+  }
+
+  &__actions {
+    @include page-workspace-actions;
+  }
+}

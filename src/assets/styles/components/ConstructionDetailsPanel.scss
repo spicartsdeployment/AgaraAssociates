@@ -1,0 +1,204 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.construction-details-panel {
+  border-color: hsl-alpha($secondary-h, 0.2);
+
+  &__title {
+    font-size: $space-4 + $space-0_5;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__title-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-secondary;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    &--budget {
+      @include respond-to(sm) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    &--tags {
+      @include respond-to(sm) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &__compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__stat-box {
+    padding: $space-4;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($muted-h, 0.5);
+  }
+
+  &__stat-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    margin-bottom: $space-1;
+  }
+
+  &__stat-label-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__stat-value {
+    font-size: $space-5;
+    font-weight: 700;
+  }
+
+  &__stat-value--md {
+    font-size: $space-4 + $space-0_5;
+    font-weight: 600;
+  }
+
+  &__contractor {
+    padding: $space-4;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__contractor-header {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-bottom: $space-2;
+  }
+
+  &__contractor-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-primary;
+  }
+
+  &__contractor-title {
+    font-weight: 500;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__contractor-name {
+    font-weight: 600;
+  }
+
+  &__contractor-meta {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+  }
+
+  &__contractor-license {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__milestones-title {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    margin-bottom: $space-3;
+  }
+
+  &__milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__milestone {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-3;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($muted-h, 0.3);
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__milestone-title {
+    font-weight: 500;
+  }
+
+  &__milestone-date {
+    color: $color-muted-foreground;
+  }
+}
+
+.construction-details-info {
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: $space-1_5;
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    margin-bottom: $space-1;
+  }
+
+  &__label-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+  }
+
+  &__value {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+}
+
+.construction-details-tags {
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: $space-1_5;
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    margin-bottom: $space-2;
+  }
+
+  &__header-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-1_5;
+  }
+
+  &__badge {
+    font-size: 10px;
+    font-weight: 400;
+  }
+}

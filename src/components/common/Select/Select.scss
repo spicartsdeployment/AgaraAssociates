@@ -1,0 +1,25 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.select {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: $radius-xl;
+  border: 1px solid $color-input;
+  background-color: $color-background;
+  padding: $space-2_5 $space-3;
+  font-size: $font-size-sm;
+  color: $color-foreground;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl-alpha($ring-h, 0.16);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,1 @@
+export { GalleryItem, GalleryItem as default } from "./GalleryItem";

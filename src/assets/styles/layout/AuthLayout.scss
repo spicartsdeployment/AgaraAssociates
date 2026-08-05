@@ -1,0 +1,90 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &__panel {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: $space-12;
+    background: linear-gradient(
+      to bottom right,
+      $color-primary,
+      hsl-alpha($primary-h, 0.9),
+      $color-secondary
+    );
+    color: $color-primary-foreground;
+
+    @include respond-to(lg) {
+      display: flex;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-8;
+    background-color: $color-background;
+  }
+
+  &__form-wrap {
+    width: 100%;
+    max-width: 28rem;
+  }
+
+  &__mobile-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: $space-8;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__hero {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  &__description {
+    max-width: 28rem;
+    font-size: $space-4 + $space-1;
+    color: hsl-alpha($primary-foreground-h, 0.8);
+  }
+
+  &__stats {
+    display: flex;
+    gap: $space-8;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__stat-value {
+    font-size: $space-7 + $space-1;
+    font-weight: 700;
+  }
+
+  &__stat-label {
+    color: hsl-alpha($primary-foreground-h, 0.7);
+  }
+
+  &__footer {
+    font-size: $space-3 + $space-0_5;
+    color: hsl-alpha($primary-foreground-h, 0.6);
+  }
+}

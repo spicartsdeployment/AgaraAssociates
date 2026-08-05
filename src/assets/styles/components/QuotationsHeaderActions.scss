@@ -1,0 +1,9 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.quotations-header-actions {
+  &__icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

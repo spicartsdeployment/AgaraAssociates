@@ -1,0 +1,172 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.construction-details-form {
+  > * + * {
+    margin-top: $space-6;
+  }
+
+  animation: construction-details-form-in 300ms ease-out both;
+
+  &__banner {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-4;
+    border-radius: $radius-2xl;
+    background-color: hsl-alpha($secondary-h, 0.1);
+    border: 1px solid hsl-alpha($secondary-h, 0.2);
+  }
+
+  &__banner-icon {
+    width: $space-6;
+    height: $space-6;
+    color: $color-secondary;
+    flex-shrink: 0;
+  }
+
+  &__banner-title {
+    font-weight: 600;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__banner-text {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__card-title {
+    font-size: $space-4;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    &--2 {
+      @include respond-to(sm) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    &--3 {
+      @include respond-to(sm) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @include respond-to(lg) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  }
+
+  &__checkbox-grid {
+    display: grid;
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    padding: $space-2_5 $space-3;
+    font-size: $space-3 + $space-0_5;
+    cursor: pointer;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.5);
+    }
+
+    &--checked {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.05);
+    }
+  }
+
+  &__checkbox {
+    border-radius: $radius-sm;
+    border-color: $color-input;
+  }
+
+  &__milestones-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__add-btn {
+    border-radius: $radius-xl;
+  }
+
+  &__add-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__milestones {
+    > * + * {
+      margin-top: $space-3;
+    }
+  }
+
+  &__milestone-row {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+
+  &__milestone-field {
+    flex: 1;
+  }
+
+  &__milestone-date-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: $space-2;
+  }
+
+  &__milestone-date {
+    flex: 1;
+
+    @include respond-to(sm) {
+      width: 10rem;
+      flex: none;
+    }
+  }
+
+  &__remove-btn {
+    flex-shrink: 0;
+    border-radius: $radius-xl;
+  }
+
+  &__remove-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-muted-foreground;
+  }
+}
+
+@keyframes construction-details-form-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

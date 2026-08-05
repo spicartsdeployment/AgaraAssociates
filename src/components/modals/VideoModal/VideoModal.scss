@@ -1,0 +1,150 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  @include flex-center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &__panel {
+    position: relative;
+    width: 95vw;
+    max-width: 1100px;
+    overflow: hidden;
+    border-radius: $radius-3xl;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    @include respond-to(md) {
+      width: 90vw;
+    }
+
+    @include respond-to(lg) {
+      width: 70vw;
+    }
+  }
+
+  &__video-wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  &__video {
+    @include absolute-fill;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__close-btn {
+    position: absolute;
+    right: $space-4;
+    top: $space-4;
+    z-index: 10;
+    @include flex-center;
+    width: $space-10;
+    height: $space-10;
+    border-radius: $radius-full;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    @include transition(all, $transition-slow);
+
+    &:hover {
+      transform: scale(1.1);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+    }
+  }
+
+  &__close-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__gradient {
+    pointer-events: none;
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: $space-28;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.2),
+      transparent
+    );
+  }
+
+  &__meta {
+    position: absolute;
+    bottom: $space-5;
+    left: $space-5;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  &__meta-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  &__meta-title {
+    margin-top: $space-1;
+    font-family: $font-serif;
+    font-size: 1.125rem;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  &__meta-location {
+    margin-top: $space-0_5;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  &__controls {
+    position: absolute;
+    bottom: $space-5;
+    right: $space-5;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: $space-2_5;
+  }
+
+  &__control-btn {
+    @include flex-center;
+    width: $space-9;
+    height: $space-9;
+    border-radius: $radius-full;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    @include transition(all, $transition-slow);
+
+    &:hover {
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+    }
+  }
+
+  &__control-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+  }
+}

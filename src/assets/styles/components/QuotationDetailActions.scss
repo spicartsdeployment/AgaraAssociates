@@ -1,0 +1,13 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.quotation-detail-actions {
+  display: flex;
+  gap: $space-2;
+  flex-wrap: wrap;
+
+  &__icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

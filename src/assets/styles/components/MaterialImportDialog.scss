@@ -1,0 +1,35 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.material-import-dialog {
+  &__content {
+    max-width: 32rem;
+  }
+
+  &__body {
+    > * + * {
+      margin-top: $space-3;
+    }
+  }
+
+  &__hint {
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+  }
+
+  &__textarea {
+    border-radius: $radius-xl;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+
+  &__btn {
+    border-radius: $radius-xl;
+  }
+}

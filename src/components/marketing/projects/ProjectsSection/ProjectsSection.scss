@@ -1,0 +1,87 @@
+@use "../../../../assets/styles/base/variables" as *;
+@use "../../../../assets/styles/base/mixins" as *;
+
+.projects-section {
+  padding: $space-8 $space-6 0;
+
+  @include respond-to(lg) {
+    padding-left: $space-10;
+    padding-right: $space-10;
+  }
+
+  &--page {
+    padding-top: $space-28;
+    padding-bottom: $space-8;
+
+    @include respond-to(lg) {
+      padding-top: $space-32;
+    }
+  }
+
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $space-4;
+  }
+
+  &__eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__title {
+    font-family: $font-serif;
+    font-size: 1.875rem;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 2.25rem;
+    }
+
+    &--page {
+      margin-top: $space-2;
+    }
+  }
+
+  &__link {
+    @include agara-glass;
+
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+    gap: $space-2;
+    border-radius: $radius-full;
+    padding: $space-2_5 $space-5;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $agara-charcoal;
+    box-shadow: $shadow-agara-soft;
+    transition: transform $transition-slow;
+
+    @include respond-to(sm) {
+      display: inline-flex;
+    }
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__link-icon {
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+}

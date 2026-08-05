@@ -1,0 +1,115 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.command {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $radius-2xl;
+  background-color: resolve-hsl($popover-h);
+  color: resolve-hsl($popover-foreground-h);
+
+  &--dialog {
+    [cmdk-group-heading] {
+      padding-left: $space-2;
+      padding-right: $space-2;
+      font-weight: 500;
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $color-border;
+    padding-left: $space-3;
+    padding-right: $space-3;
+  }
+
+  &__search-icon {
+    margin-right: $space-2;
+    height: 1rem;
+    width: 1rem;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  &__input {
+    display: flex;
+    height: 3rem;
+    width: 100%;
+    border: none;
+    border-radius: $radius-md;
+    background-color: transparent;
+    padding-top: $space-3;
+    padding-bottom: $space-3;
+    font-size: 0.875rem;
+    color: inherit;
+    outline: none;
+
+    &::placeholder {
+      color: $color-muted-foreground;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  &__list {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__empty {
+    padding-top: $space-6;
+    padding-bottom: $space-6;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  &__group {
+    overflow: hidden;
+    padding: $space-1;
+    color: $color-foreground;
+
+    [cmdk-group-heading] {
+      padding: $space-1_5 $space-2;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    cursor: default;
+    user-select: none;
+    align-items: center;
+    gap: $space-2;
+    border-radius: $radius-md;
+    padding: $space-2;
+    font-size: 0.875rem;
+    outline: none;
+
+    &[data-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    &[data-selected="true"] {
+      background-color: $color-muted;
+      color: $color-foreground;
+    }
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}

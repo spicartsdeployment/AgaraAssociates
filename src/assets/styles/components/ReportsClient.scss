@@ -1,0 +1,71 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.reports-client {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  @include fade-in;
+
+  &__header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__tab-content {
+    margin-top: $space-6;
+  }
+
+  &__projects-grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__project-card-content {
+    padding: $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__project-name {
+    font-weight: 600;
+  }
+
+  &__project-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-2;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__stat-label {
+    color: $color-muted-foreground;
+  }
+
+  &__stat-value {
+    font-weight: 500;
+
+    &--success {
+      color: $color-success;
+    }
+  }
+
+  &__chart-content {
+    padding-top: $space-6;
+  }
+
+  &__export-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

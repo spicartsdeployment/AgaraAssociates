@@ -1,0 +1,20 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.progress {
+  position: relative;
+  height: $space-2;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $radius-full;
+  background-color: $color-muted;
+
+  &__indicator {
+    height: 100%;
+    width: 100%;
+    flex: 1 1 0%;
+    background-color: $color-primary;
+    transform: translateX(calc(-1 * var(--progress-offset, 100%)));
+    @include transition(transform, 500ms ease);
+  }
+}

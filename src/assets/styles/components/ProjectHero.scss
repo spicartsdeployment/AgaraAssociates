@@ -1,0 +1,66 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.project-hero {
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba($agara-charcoal, 0.6);
+    @include transition(color);
+
+    &:hover {
+      color: $agara-charcoal;
+    }
+  }
+
+  &__back-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  &__meta {
+    margin-top: $space-6;
+  }
+
+  &__category {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__title {
+    margin-top: $space-2;
+    font-family: $font-serif;
+    font-size: 1.875rem;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 3rem;
+    }
+  }
+
+  &__image-wrap {
+    margin-top: $space-6;
+    overflow: hidden;
+    border-radius: $radius-32;
+    box-shadow: $shadow-agara-soft;
+  }
+
+  &__image {
+    height: 420px;
+    width: 100%;
+    object-fit: cover;
+
+    @include respond-to(lg) {
+      height: 520px;
+    }
+  }
+}

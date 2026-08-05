@@ -1,0 +1,176 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.client-detail-page {
+  @include page-root;
+
+  &__back-link {
+    @include page-back-link;
+  }
+
+  &__layout {
+    display: grid;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__profile-card {
+    @include respond-to(lg) {
+      grid-column: span 1;
+    }
+  }
+
+  &__profile-content {
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__profile-header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__avatar {
+    width: $space-12;
+    height: $space-12;
+  }
+
+  &__avatar-fallback {
+    background-color: $color-secondary;
+  }
+
+  &__profile-name {
+    font-weight: 600;
+  }
+
+  &__profile-company {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    font-size: 0.875rem;
+    @include text-muted;
+
+    p {
+      display: flex;
+      align-items: center;
+      gap: $space-2;
+    }
+
+    svg {
+      @include icon-sm;
+    }
+  }
+
+  &__stats {
+    @include page-stat-row;
+  }
+
+  &__stat-value {
+    font-weight: 700;
+
+    &--sm {
+      font-size: 0.875rem;
+    }
+  }
+
+  &__stat-label {
+    @include page-stat-label;
+  }
+
+  &__notes {
+    font-size: 0.875rem;
+    @include text-muted;
+    font-style: italic;
+    border-top: 1px solid $color-border;
+    padding-top: $space-3;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      grid-column: span 2;
+    }
+  }
+
+  &__section-title {
+    font-size: 1.125rem;
+  }
+
+  &__section-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__empty {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__list-link {
+    @include page-list-link;
+  }
+
+  &__list-link-meta {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+
+  &__list-link-right {
+    text-align: right;
+  }
+
+  &__list-link-amount {
+    font-weight: 600;
+  }
+
+  &__comm-item {
+    padding: $space-3;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__comm-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__comm-subject {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  &__comm-badge {
+    @include badge-capitalize;
+    @include badge-xs;
+  }
+
+  &__comm-summary {
+    font-size: 0.75rem;
+    @include text-muted;
+    margin-top: $space-1;
+  }
+
+  &__comm-date {
+    font-size: 10px;
+    @include text-muted;
+    margin-top: $space-2;
+  }
+}

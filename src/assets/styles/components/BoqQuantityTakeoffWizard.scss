@@ -1,0 +1,482 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@keyframes boq-wizard-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.boq-quantity-takeoff-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  padding-bottom: $space-10;
+  animation: boq-wizard-fade-in 500ms ease-out;
+
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+    text-decoration: none;
+    @include transition(color);
+
+    &:hover {
+      color: $color-foreground;
+    }
+  }
+
+  &__back-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__step-badge {
+    border-radius: $radius-xl;
+    padding: $space-1 $space-3;
+  }
+
+  &__setup-grid {
+    display: grid;
+    gap: $space-4;
+    max-width: 42rem;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field {
+    > * + * {
+      margin-top: $space-2;
+    }
+
+    &--full {
+      @include respond-to(sm) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__input {
+    border-radius: $radius-xl;
+  }
+
+  &__select {
+    border-radius: $radius-xl;
+  }
+
+  &__hint {
+    font-size: 0.75rem;
+    color: $color-muted-foreground;
+  }
+
+  &__section-title {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__section-icon {
+    width: $space-5;
+    height: $space-5;
+  }
+
+  &__section-desc {
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+  }
+
+  // ── Trade-category horizontal scroll strip ───────────────────────────
+  &__tabs-scroll-wrapper {
+    position: relative;
+    margin-bottom: $space-4;
+
+    // Left fade edge
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2.5rem;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity $transition-base;
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(
+        to right,
+        $color-card 0%,
+        transparent 100%
+      );
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(
+        to left,
+        $color-card 0%,
+        transparent 100%
+      );
+    }
+
+    // Hide fade when scroll is at edge (toggled via JS class)
+    &--at-start::before { opacity: 0; }
+    &--at-end::after    { opacity: 0; }
+  }
+
+  &__tabs-list {
+    // Single horizontal row — never wrap
+    display: flex;
+    flex-wrap: nowrap;
+    height: auto;
+    width: 100%;
+    gap: $space-1;
+    padding: $space-1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+
+    // Hide scrollbar on all browsers (keep functionality)
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__tab-trigger {
+    // Keep triggers on one line and consistent in size
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  &__tab-content {
+    > * + * {
+      margin-top: $space-4;
+    }
+  }
+
+  &__table-wrap {
+    overflow-x: auto;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__table {
+    width: 100%;
+    font-size: 0.875rem;
+  }
+
+  &__thead-row {
+    border-bottom: 1px solid $color-border;
+    background-color: hsl-alpha($muted-h, 0.4);
+    text-align: left;
+    color: $color-muted-foreground;
+  }
+
+  &__th {
+    padding: $space-3;
+
+    &--item {
+      min-width: 200px;
+    }
+
+    &--qty {
+      width: 7rem;
+    }
+
+    &--unit {
+      width: 5rem;
+    }
+
+    &--material {
+      min-width: 180px;
+    }
+
+    &--rate {
+      width: 6rem;
+      text-align: right;
+    }
+  }
+
+  &__tbody-row {
+    border-bottom: 1px solid $color-border;
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.2);
+    }
+  }
+
+  &__td {
+    padding: $space-3;
+
+    &--muted {
+      color: $color-muted-foreground;
+    }
+
+    &--right {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__field-label {
+    font-weight: 500;
+  }
+
+  &__field-help {
+    font-size: 10px;
+    color: $color-muted-foreground;
+  }
+
+  &__cell-input {
+    height: $space-8;
+    border-radius: $radius-lg;
+  }
+
+  &__cell-select {
+    height: $space-8;
+    border-radius: $radius-lg;
+    font-size: 0.75rem;
+  }
+
+  &__no-match {
+    font-size: 0.75rem;
+    color: $color-muted-foreground;
+  }
+
+  &__room-header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__room-header-text {
+    min-width: 0;
+  }
+
+  &__room-desc {
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__add-room-btn {
+    border-radius: $radius-xl;
+    gap: $space-1;
+  }
+
+  &__add-room-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__room-table-wrap {
+    overflow-x: auto;
+  }
+
+  &__room-table {
+    width: 100%;
+    font-size: 0.875rem;
+    min-width: 960px;
+  }
+
+  &__room-thead-row {
+    border-bottom: 1px solid $color-border;
+    background-color: hsl-alpha($muted-h, 0.4);
+    text-align: left;
+    color: $color-muted-foreground;
+    font-size: 0.75rem;
+  }
+
+  &__room-th {
+    padding: $space-2;
+  }
+
+  &__room-row {
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__room-td {
+    padding: $space-1;
+
+    &--readonly {
+      padding: $space-2;
+      font-variant-numeric: tabular-nums;
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__room-input {
+    height: $space-8;
+    border-radius: $radius-lg;
+
+    &--name {
+      min-width: 120px;
+    }
+
+    &--floor {
+      width: 5rem;
+    }
+
+    &--dim {
+      width: 4rem;
+    }
+
+    &--qty {
+      width: 5rem;
+    }
+  }
+
+  &__delete-btn {
+    width: $space-8;
+    height: $space-8;
+  }
+
+  &__delete-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__review-grid {
+    display: grid;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__review-main {
+    @include respond-to(lg) {
+      grid-column: span 2;
+    }
+
+    > * + * {
+      margin-top: $space-4;
+    }
+  }
+
+  &__estimate-table-wrap {
+    padding: 0;
+    overflow-x: auto;
+    max-height: 420px;
+    overflow-y: auto;
+  }
+
+  &__estimate-thead {
+    position: sticky;
+    top: 0;
+    background-color: hsl-alpha($muted-h, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  &__estimate-name {
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__estimate-sku {
+    font-size: 10px;
+    color: $color-muted-foreground;
+  }
+
+  &__estimate-empty {
+    padding: $space-8;
+    text-align: center;
+    color: $color-muted-foreground;
+  }
+
+  &__summary-card {
+    height: fit-content;
+    position: sticky;
+    top: 6rem;
+  }
+
+  &__summary-body {
+    > * + * {
+      margin-top: $space-3;
+    }
+
+    font-size: 0.875rem;
+  }
+
+  &__summary-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__summary-label {
+    color: $color-muted-foreground;
+  }
+
+  &__summary-total {
+    border-top: 1px solid $color-border;
+    padding-top: $space-3;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
+  &__summary-note {
+    font-size: 0.75rem;
+    color: $color-muted-foreground;
+    padding-top: $space-2;
+  }
+
+  &__summary-actions {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    padding-top: $space-2;
+  }
+
+  &__summary-btn {
+    border-radius: $radius-xl;
+    width: 100%;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: $space-2;
+  }
+
+  &__nav-btn {
+    border-radius: $radius-xl;
+  }
+
+  &__nav-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

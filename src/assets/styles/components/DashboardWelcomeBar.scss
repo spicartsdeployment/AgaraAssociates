@@ -1,0 +1,170 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.dashboard-welcome-bar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  flex-shrink: 0;
+
+  @include respond-to(lg) {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: $space-5;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__studio {
+    font-size: 0.72rem;
+    color: $color-muted-foreground;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: $tracking-tight;
+    margin-top: $space-0_5;
+
+    @include respond-to(sm) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__pills {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__pill {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    min-width: 0;
+    border-radius: $radius-xl;
+  }
+
+  &__pill-label {
+    font-size: 0.68rem;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__progress-track {
+    flex: 1;
+    height: 0.4rem;
+    border-radius: $radius-full;
+    background-color: $color-surface-hover;
+    overflow: hidden;
+    min-width: 24px;
+  }
+
+  &__progress-fill {
+    height: 100%;
+    border-radius: $radius-full;
+    width: var(--progress-width, 0%);
+    @include transition(width);
+
+    &--primary {
+      background-color: $color-primary;
+    }
+
+    &--accent {
+      background-color: $color-accent;
+    }
+
+    &--secondary {
+      background-color: $color-secondary;
+    }
+  }
+
+  &__pill-value {
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-2;
+    width: 100%;
+
+    @include respond-to(lg) {
+      display: flex;
+      width: auto;
+      margin-left: $space-6;
+      flex-shrink: 0;
+    }
+  }
+
+  &__stat-card {
+    padding: $space-2_5 $space-3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-1;
+    min-width: 0;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      gap: $space-2;
+      padding: $space-3 $space-4;
+    }
+  }
+
+  &__stat-icon {
+    width: 1rem;
+    height: 1rem;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+  }
+
+  &__stat-text {
+    text-align: center;
+    min-width: 0;
+
+    @include respond-to(sm) {
+      text-align: left;
+    }
+  }
+
+  &__stat-value {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__stat-label {
+    font-size: 0.68rem;
+    color: $color-muted-foreground;
+    margin-top: $space-0_5;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}

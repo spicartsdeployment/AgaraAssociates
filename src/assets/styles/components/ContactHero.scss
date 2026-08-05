@@ -1,0 +1,142 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.contact-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 520px;
+  width: 100%;
+  overflow: hidden;
+
+  &__bg {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  &__bg-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__gradient-r {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba($background, 0.85),
+      rgba($background, 0.45),
+      transparent
+    );
+  }
+
+  &__gradient-t {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba($background, 0.5),
+      transparent,
+      rgba($background, 0.2)
+    );
+  }
+
+  &__content-wrap {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: $space-16 $space-6 0;
+
+    @include respond-to(lg) {
+      padding-left: $space-10;
+      padding-right: $space-10;
+    }
+
+    @include respond-to(xl) {
+      padding-left: $space-16;
+      padding-right: $space-16;
+    }
+  }
+
+  &__panel {
+    max-width: 440px;
+    border-radius: $radius-32;
+    padding: $space-8;
+    box-shadow: $shadow-agara-soft;
+
+    @include respond-to(sm) {
+      padding: $space-10;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: $tracking-widest;
+    color: rgba($agara-charcoal, 0.5);
+  }
+
+  &__title {
+    margin-top: $space-4;
+    font-family: $font-serif;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: $tracking-tight;
+    color: $agara-charcoal;
+
+    @include respond-to(sm) {
+      font-size: 48px;
+    }
+
+    @include respond-to(lg) {
+      font-size: 64px;
+    }
+  }
+
+  &__description {
+    margin-top: $space-5;
+    max-width: 24rem;
+    font-size: 15px;
+    line-height: 1.9;
+    color: $secondary-text;
+
+    @include respond-to(lg) {
+      font-size: 18px;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-8;
+    border-radius: $radius-full;
+    background: $agara-charcoal;
+    padding: $space-3_5 $space-6;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $agara-cream;
+    @include transition(transform, 300ms);
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__cta-icon {
+    width: 14px;
+    height: 14px;
+    @include transition(transform, 300ms);
+
+    .contact-hero__cta:hover & {
+      transform: translateX(2px);
+    }
+  }
+}

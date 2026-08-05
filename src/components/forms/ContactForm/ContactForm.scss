@@ -1,0 +1,91 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.contact-main__form {
+  margin-top: $space-8;
+  display: grid;
+  gap: $space-5;
+
+  @include respond-to(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-main__field {
+  display: block;
+
+  &--half {
+    @include respond-to(sm) {
+      grid-column: span 1;
+    }
+  }
+
+  &--full {
+    @include respond-to(sm) {
+      grid-column: span 2;
+    }
+  }
+}
+
+.contact-main__input {
+  margin-top: $space-2;
+  width: 100%;
+  border-radius: $radius-2xl;
+  border: 1px solid #e7ded3;
+  background: rgba($card, 0.8);
+  padding: $space-3_5 $space-4;
+  font-size: 15px;
+  color: $agara-charcoal;
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  @include transition(border-color);
+
+  &::placeholder {
+    color: rgba($agara-charcoal, 0.35);
+  }
+
+  &:focus {
+    border-color: rgba($agara-charcoal, 0.25);
+  }
+
+  &--textarea {
+    resize: none;
+  }
+}
+
+.contact-main__submit-wrap {
+  @include respond-to(sm) {
+    grid-column: span 2;
+  }
+}
+
+.contact-main__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  border-radius: $radius-full;
+  background: $agara-charcoal;
+  padding: $space-3_5 $space-7;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: $agara-cream;
+  @include transition(transform, 300ms);
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.contact-main__submit-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.contact-main__success {
+  margin-top: $space-10;
+  font-size: 16px;
+  line-height: 1.9;
+  color: $secondary-text;
+}

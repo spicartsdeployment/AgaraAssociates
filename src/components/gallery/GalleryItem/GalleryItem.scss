@@ -1,0 +1,65 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.project-gallery__item {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-bottom: $space-4;
+  break-inside: avoid;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: $shadow-agara-soft;
+  @include focus-ring;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px rgba($agara-charcoal, 0.3);
+  }
+}
+
+.project-gallery__media {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  @include transition(transform, 700ms);
+}
+
+.project-gallery__item:hover .project-gallery__media {
+  transform: scale(1.05);
+}
+
+.project-gallery__video-wrap {
+  position: relative;
+}
+
+.project-gallery__play-overlay {
+  position: absolute;
+  inset: 0;
+  @include flex-center;
+  background: rgba(0, 0, 0, 0.2);
+  @include transition(background-color, 300ms);
+}
+
+.project-gallery__item:hover .project-gallery__play-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.project-gallery__play-btn {
+  @include flex-center;
+  width: $space-12;
+  height: $space-12;
+  border-radius: $radius-full;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.project-gallery__play-icon {
+  margin-left: 2px;
+  width: $space-4;
+  height: $space-4;
+  fill: #fff;
+}

@@ -1,0 +1,103 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.journal-section__card {
+  @include agara-glass;
+
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  border-radius: 20px;
+  padding: $space-3;
+  box-shadow: $shadow-agara-soft;
+  transition: transform $transition-slow;
+
+  &:hover {
+    transform: translateY(-0.125rem);
+
+    .journal-section__card-image {
+      transform: scale(1.05);
+    }
+
+    .journal-section__card-action {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.journal-section__card-link {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: $space-4;
+}
+
+.journal-section__card-thumb {
+  height: 5rem;
+  width: 6rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 14px;
+
+  @include respond-to(sm) {
+    height: $space-24;
+    width: 7rem;
+  }
+}
+
+.journal-section__card-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.journal-section__card-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.journal-section__card-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-family: $font-serif;
+  font-size: $space-3_5;
+  line-height: 1.375;
+  color: $agara-charcoal;
+}
+
+.journal-section__card-meta {
+  margin-top: $space-1_5;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba($agara-charcoal, 0.5);
+}
+
+.journal-section__card-meta-sep {
+  margin-left: $space-1_5;
+  margin-right: $space-1_5;
+  color: rgba($agara-charcoal, 0.3);
+}
+
+.journal-section__card-action {
+  display: flex;
+  height: $space-9;
+  width: $space-9;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-full;
+  border: 1px solid rgba($agara-charcoal, 0.15);
+  background: rgba(255, 255, 255, 0.4);
+  color: $agara-charcoal;
+  transition: transform $transition-slow;
+}
+
+.journal-section__card-action-icon {
+  height: 0.875rem;
+  width: 0.875rem;
+}

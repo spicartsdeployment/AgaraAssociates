@@ -1,0 +1,26 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.drawing-upload-dialog {
+  &__content {
+    max-width: 28rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+}

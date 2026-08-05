@@ -1,0 +1,1 @@
+export { VideoModal, VideoModal as default } from "./VideoModal";

@@ -1,0 +1,122 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.project-card {
+  &__link {
+    display: block;
+    cursor: pointer;
+  }
+
+  &__media {
+    @include agara-card-surface(24px);
+
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    .project-card:hover & {
+      transform: translateY(-0.25rem);
+      box-shadow: $shadow-card-hover;
+    }
+  }
+
+  &__image {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    @include transition(transform, 700ms);
+
+    .project-card:hover & {
+      transform: scale(1.05);
+    }
+  }
+
+  &__gradient {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 10rem;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.1),
+      transparent
+    );
+  }
+
+  &__caption-wrap {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+  }
+
+  &__caption {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: $space-2;
+  }
+
+  &__caption-content {
+    display: flex;
+    min-height: 30px;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: $font-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    color: $agara-charcoal;
+  }
+
+  &__category {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 16px;
+    overflow: hidden;
+    font-size: 11px;
+    color: rgba($agara-charcoal, 0.65);
+  }
+
+  &__category-item {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__category-separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgba($agara-charcoal, 0.55);
+  }
+
+  &__arrow {
+    @include flex-center;
+    margin-left: $space-4;
+    width: $space-8;
+    height: $space-8;
+    flex-shrink: 0;
+    border-radius: $radius-full;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  &__arrow-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

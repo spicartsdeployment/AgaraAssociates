@@ -1,0 +1,1 @@
+export { ProjectGallery, ProjectGallery as default } from "./ProjectGallery";

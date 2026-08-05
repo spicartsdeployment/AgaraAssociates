@@ -1,0 +1,230 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.client-workspace-shell {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+  @include fade-in;
+
+  &__prompt-card {
+    border-color: hsl-alpha($accent-h, 0.25);
+    background-color: hsl-alpha($accent-h, 0.05);
+  }
+
+  &__prompt-content {
+    padding: $space-4;
+    display: flex;
+    gap: $space-3;
+    align-items: flex-start;
+  }
+
+  &__prompt-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-accent;
+    flex-shrink: 0;
+    margin-top: $space-0_5;
+  }
+
+  &__prompt-title {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 600;
+  }
+
+  &__prompt-text {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__client-card {
+    text-align: left;
+    border-radius: $radius-2xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    background-color: hsl-alpha($surface-h, 0.5);
+    padding: $space-5;
+    cursor: pointer;
+    @include transition(all);
+
+    &:hover {
+      background-color: $color-surface-hover;
+      border-color: hsl-alpha($accent-h, 0.3);
+      transform: translateY(-0.125rem);
+      box-shadow: $shadow-card-hover;
+    }
+  }
+
+  &__client-card-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+  }
+
+  &__avatar {
+    width: $space-10;
+    height: $space-10;
+    flex-shrink: 0;
+  }
+
+  &__avatar-fallback {
+    background-color: $color-primary;
+    color: $color-foreground;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__client-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__client-name {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__client-company {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-1_5;
+    margin-top: $space-2;
+  }
+
+  &__badge {
+    font-size: 10px;
+  }
+
+  &__chevron {
+    width: $space-4;
+    height: $space-4;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+    opacity: 0;
+    @include transition(opacity);
+
+    .client-workspace-shell__client-card:hover & {
+      opacity: 1;
+    }
+  }
+
+  &__header-row {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
+
+  &__header-main {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__back-btn {
+    border-radius: $radius-xl;
+    margin-left: -$space-2;
+    height: $space-8;
+    padding-left: $space-2;
+    padding-right: $space-2;
+    color: $color-muted-foreground;
+  }
+
+  &__back-icon {
+    width: $space-4;
+    height: $space-4;
+    margin-right: $space-1;
+  }
+
+  &__description-name {
+    font-weight: 500;
+    color: $color-foreground;
+  }
+
+  &__description-meta {
+    color: $color-muted-foreground;
+  }
+
+  &__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    flex-shrink: 0;
+  }
+
+  &__context-bar {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2_5 $space-4;
+    border-radius: $radius-2xl;
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    background-color: hsl-alpha($surface-h, 0.6);
+  }
+
+  &__context-avatar {
+    width: $space-8;
+    height: $space-8;
+  }
+
+  &__context-avatar-fallback {
+    background-color: $color-primary;
+    color: $color-foreground;
+    font-size: $space-3;
+  }
+
+  &__context-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__context-name {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__context-meta {
+    font-size: 11px;
+    color: $color-muted-foreground;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__context-badge {
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+}

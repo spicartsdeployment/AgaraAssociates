@@ -1,0 +1,42 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.quotation-create-dialog {
+  &__content {
+    max-width: 28rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field-span-2 {
+    @include respond-to(sm) {
+      grid-column: span 2;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+}

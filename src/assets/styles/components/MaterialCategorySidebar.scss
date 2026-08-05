@@ -1,0 +1,207 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.material-category-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  border-radius: $radius-3xl;
+  border: 1px solid hsl-alpha($border-h, 0.4);
+  background-color: hsl-alpha($surface-h, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: $shadow-glass-sm;
+  overflow: hidden;
+
+  &__header {
+    padding: $space-3 $space-4;
+    border-bottom: 1px solid $color-divider;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  &__subtitle {
+    font-size: 10px;
+    color: $color-muted-foreground;
+    margin-top: $space-0_5;
+  }
+
+  &__scroll {
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__list {
+    padding: $space-2;
+
+    > * + * {
+      margin-top: $space-0_5;
+    }
+  }
+
+  &__quick-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $space-2_5;
+    padding: $space-2 $space-3;
+    border-radius: $radius-xl;
+    font-size: 13px;
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: $color-foreground;
+    cursor: pointer;
+    text-align: left;
+    @include transition(color background-color);
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+
+    &--active {
+      border-radius: $radius-full;
+      box-shadow: $shadow-sm;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: hsl-alpha($primary-h, 0.18);
+      color: $color-primary-foreground;
+    }
+  }
+
+  &__quick-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $color-divider;
+    margin: $space-2;
+  }
+
+  &__category-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-2_5;
+    border-radius: $radius-xl;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+
+    &--active {
+      border-radius: $radius-full;
+      box-shadow: $shadow-sm;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: hsl-alpha($primary-h, 0.18);
+      color: $color-primary-foreground;
+    }
+  }
+
+  &__expand-btn {
+    padding: $space-0_5;
+    border-radius: $radius-md;
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__expand-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    color: $color-muted-foreground;
+  }
+
+  &__category-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+    color: $color-accent;
+  }
+
+  &__category-label {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.375;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__category-count {
+    font-size: 10px;
+    font-variant-numeric: tabular-nums;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+  }
+
+  &__sub-list {
+    margin-left: $space-6;
+    padding-left: $space-2;
+    border-left: 1px solid hsl-alpha($divider-h, 0.6);
+    margin-bottom: $space-1;
+
+    > * + * {
+      margin-top: $space-0_5;
+    }
+  }
+
+  &__sub-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    padding: $space-1_5 $space-2_5;
+    border-radius: $radius-lg;
+    font-size: 11px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    @include transition(color background-color);
+
+    &:hover {
+      background-color: $color-surface-hover;
+      color: $color-foreground;
+    }
+
+    &--active {
+      background-color: hsl-alpha($accent-h, 0.15);
+      color: $color-foreground;
+      font-weight: 500;
+    }
+
+    &:not(&--active) {
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__sub-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__sub-count {
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+}

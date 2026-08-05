@@ -1,0 +1,54 @@
+@use "../base/variables" as *;
+
+.u-m-0 {
+  margin: $space-0;
+}
+.u-mt-2 {
+  margin-top: $space-2;
+}
+.u-mt-4 {
+  margin-top: $space-4;
+}
+.u-mt-6 {
+  margin-top: $space-6;
+}
+.u-mb-2 {
+  margin-bottom: $space-2;
+}
+.u-mb-4 {
+  margin-bottom: $space-4;
+}
+.u-mb-6 {
+  margin-bottom: $space-6;
+}
+.u-p-4 {
+  padding: $space-4;
+}
+.u-p-6 {
+  padding: $space-6;
+}
+.u-px-4 {
+  padding-left: $space-4;
+  padding-right: $space-4;
+}
+.u-px-6 {
+  padding-left: $space-6;
+  padding-right: $space-6;
+}
+.u-py-4 {
+  padding-top: $space-4;
+  padding-bottom: $space-4;
+}
+.u-py-6 {
+  padding-top: $space-6;
+  padding-bottom: $space-6;
+}
+.u-gap-2 {
+  gap: $space-2;
+}
+.u-gap-4 {
+  gap: $space-4;
+}
+.u-gap-6 {
+  gap: $space-6;
+}

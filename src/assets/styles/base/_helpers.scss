@@ -1,0 +1,52 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// Base helper mixins/classes for architecture readiness (opt-in)
+
+@mixin hidden {
+  display: none;
+}
+
+@mixin visible {
+  visibility: visible;
+}
+
+@mixin invisible {
+  visibility: hidden;
+}
+
+.u-hidden {
+  display: none;
+}
+
+.u-invisible {
+  visibility: hidden;
+}
+
+.u-overflow-hidden {
+  overflow: hidden;
+}
+
+.u-overflow-auto {
+  overflow: auto;
+}
+
+.u-text-left {
+  text-align: left;
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.u-aspect-video {
+  aspect-ratio: 16 / 9;
+}

@@ -1,0 +1,88 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.finance-client {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  @include fade-in;
+
+  &__stats {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__section-title {
+    font-size: $space-4 + $space-0_5;
+    font-weight: 600;
+  }
+
+  &__table-wrap {
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    font-size: $space-3 + $space-0_5;
+    border-collapse: collapse;
+  }
+
+  &__thead-row {
+    border-bottom: 1px solid $color-border;
+    background-color: hsl-alpha($muted-h, 0.5);
+    text-align: left;
+  }
+
+  &__th {
+    padding: $space-3;
+  }
+
+  &__row {
+    border-bottom: 1px solid $color-border;
+
+    &:hover {
+      background-color: hsl-alpha($muted-h, 0.3);
+    }
+  }
+
+  &__td {
+    padding: $space-3;
+
+    &--bold {
+      font-weight: 500;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+
+  &__pagination-text {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+  }
+
+  &__pending-value {
+    font-size: $space-7 + $space-1;
+    font-weight: 700;
+  }
+
+  &__pending-meta {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+  }
+}

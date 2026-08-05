@@ -1,0 +1,141 @@
+@use "../../../../assets/styles/base/variables" as *;
+@use "../../../../assets/styles/base/mixins" as *;
+
+.hero-section {
+  position: relative;
+  height: 100dvh;
+  min-height: 640px;
+  width: 100%;
+  overflow: hidden;
+
+  &__bg {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+  }
+
+  &__bg-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__featured-wrap {
+    position: absolute;
+    top: 15.5rem;
+    right: $space-6;
+    z-index: 10;
+    display: none;
+
+    @include respond-to(sm) {
+      display: block;
+    }
+
+    @include respond-to(lg) {
+      right: 6rem;
+    }
+
+    @include respond-to(xl) {
+      right: 6rem;
+    }
+  }
+
+  &__content-wrap {
+    pointer-events: none;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: $space-24 $space-6 $space-32;
+
+    @include respond-to(lg) {
+      padding-left: $space-10;
+      padding-right: $space-10;
+      padding-bottom: $space-28;
+    }
+
+    @include respond-to(xl) {
+      padding-left: $space-16;
+      padding-right: $space-16;
+    }
+  }
+
+  &__content {
+    pointer-events: auto;
+    max-width: 420px;
+
+    @include respond-to(lg) {
+      max-width: 480px;
+    }
+  }
+
+  &__eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: $tracking-widest;
+    color: rgba($agara-charcoal, 0.55);
+  }
+
+  &__title {
+    margin-top: $space-4;
+    font-family: $font-serif;
+    font-size: clamp(2.5rem, 5vw, 4.25rem);
+    line-height: 1.05;
+    letter-spacing: $tracking-tight;
+    color: $agara-charcoal;
+  }
+
+  &__description {
+    margin-top: $space-5;
+    max-width: 24rem;
+    font-size: 13px;
+    line-height: 1.625;
+    color: rgba($agara-charcoal, 0.65);
+
+    @include respond-to(lg) {
+      font-size: 0.875rem;
+    }
+  }
+
+  &__actions {
+    margin-top: $space-8;
+    display: flex;
+    align-items: center;
+    gap: $space-5;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    border-radius: $radius-full;
+    background: $agara-charcoal;
+    padding: $space-3_5 $space-6;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: $agara-cream;
+    @include transition(transform, $transition-slow);
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
+
+  &__cta-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+    @include transition(transform, $transition-slow);
+  }
+
+  &__cta:hover &__cta-icon {
+    transform: translateX(0.125rem);
+  }
+}

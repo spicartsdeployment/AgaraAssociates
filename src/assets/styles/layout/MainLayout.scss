@@ -1,0 +1,13 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.main-layout {
+  min-height: 100vh;
+  font-family: $font-inter;
+  color: $agara-charcoal;
+  background-color: $agara-cream;
+
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+}

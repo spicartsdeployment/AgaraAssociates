@@ -1,0 +1,30 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.glass-card {
+  border-radius: $radius-xl;
+  border-width: 1px;
+  border-style: solid;
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  @include transition(box-shadow);
+
+  &--light {
+    background-color: hsl-alpha(0 0% 100%, 0.18);
+    border-color: hsl-alpha(0 0% 100%, 0.28);
+    box-shadow: $shadow-glass-sm;
+  }
+
+  &--subtle {
+    background-color: hsl-alpha(0 0% 100%, 0.14);
+    border-color: hsl-alpha(0 0% 100%, 0.24);
+    box-shadow: $shadow-glass-sm;
+  }
+
+  &--dark {
+    background-color: hsl-alpha(0 0% 0%, 0.7);
+    border-color: hsl-alpha(0 0% 100%, 0.15);
+    box-shadow: $shadow-glass-dark;
+    color: $color-primary-foreground;
+  }
+}

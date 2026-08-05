@@ -1,0 +1,96 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.boq-client-view {
+  &__empty {
+    border-style: dashed;
+  }
+
+  &__empty-content {
+    padding-top: $space-16;
+    padding-bottom: $space-16;
+    text-align: center;
+    color: $color-muted-foreground;
+  }
+
+  &__empty-title {
+    font-weight: 500;
+    color: $color-foreground;
+  }
+
+  &__empty-text {
+    font-size: 0.875rem;
+    margin-top: $space-1;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__card {
+    height: 100%;
+  }
+
+  &__card-content {
+    padding: $space-6;
+
+    > * + * {
+      margin-top: $space-4;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__card-icon-wrap {
+    display: flex;
+    width: $space-10;
+    height: $space-10;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($primary-h, 0.1);
+  }
+
+  &__card-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+  }
+
+  &__card-title {
+    font-weight: 600;
+  }
+
+  &__card-project {
+    font-size: 0.875rem;
+    color: $color-muted-foreground;
+  }
+
+  &__card-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  &__card-items {
+    color: $color-muted-foreground;
+  }
+
+  &__card-total {
+    font-weight: 700;
+  }
+
+  &__card-updated {
+    font-size: 0.75rem;
+    color: $color-muted-foreground;
+  }
+}

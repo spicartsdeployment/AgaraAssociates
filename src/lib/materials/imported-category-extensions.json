@@ -1,0 +1,1168 @@
+{
+  "civil_construction": [
+    {
+      "id": "cement",
+      "label": "Cement"
+    },
+    {
+      "id": "sand",
+      "label": "Sand"
+    },
+    {
+      "id": "aggregate",
+      "label": "Aggregate"
+    },
+    {
+      "id": "admixture",
+      "label": "Admixture"
+    },
+    {
+      "id": "tmt_bar",
+      "label": "TMT Bar"
+    },
+    {
+      "id": "blocks_bricks",
+      "label": "Blocks & Bricks"
+    },
+    {
+      "id": "shuttering",
+      "label": "Shuttering"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    },
+    {
+      "id": "waterproofing",
+      "label": "Cementitious"
+    },
+    {
+      "id": "liquid_membrane",
+      "label": "Liquid Membrane"
+    },
+    {
+      "id": "bituminous",
+      "label": "Bituminous"
+    },
+    {
+      "id": "crystalline",
+      "label": "Crystalline"
+    },
+    {
+      "id": "plastering",
+      "label": "Plastering"
+    },
+    {
+      "id": "repair",
+      "label": "Repair"
+    },
+    {
+      "id": "bonding",
+      "label": "Bonding"
+    },
+    {
+      "id": "curing",
+      "label": "Curing"
+    },
+    {
+      "id": "injection",
+      "label": "Injection"
+    },
+    {
+      "id": "flooring",
+      "label": "Flooring"
+    },
+    {
+      "id": "roofing",
+      "label": "Roof Covering"
+    },
+    {
+      "id": "thermal",
+      "label": "Thermal"
+    },
+    {
+      "id": "radiant",
+      "label": "Radiant"
+    },
+    {
+      "id": "acoustic",
+      "label": "Acoustic"
+    },
+    {
+      "id": "gutter",
+      "label": "Gutter"
+    },
+    {
+      "id": "downpipe",
+      "label": "Downpipe"
+    },
+    {
+      "id": "outlet",
+      "label": "Outlet"
+    },
+    {
+      "id": "leaf_guard",
+      "label": "Leaf Guard"
+    },
+    {
+      "id": "mounting",
+      "label": "Mounting"
+    },
+    {
+      "id": "fastener",
+      "label": "Fastener"
+    },
+    {
+      "id": "seal",
+      "label": "Seal"
+    },
+    {
+      "id": "geotextiles",
+      "label": "Geotextiles"
+    },
+    {
+      "id": "expansion_joint",
+      "label": "Expansion Joint"
+    },
+    {
+      "id": "mcb",
+      "label": "Protection"
+    }
+  ],
+  "miscellaneous": [
+    {
+      "id": "general",
+      "label": "General"
+    },
+    {
+      "id": "wood",
+      "label": "Wood"
+    },
+    {
+      "id": "laminate",
+      "label": "Laminate"
+    },
+    {
+      "id": "epoxy",
+      "label": "Epoxy"
+    },
+    {
+      "id": "construction",
+      "label": "Construction"
+    },
+    {
+      "id": "mirror",
+      "label": "Mirror"
+    },
+    {
+      "id": "silicone",
+      "label": "Silicone"
+    },
+    {
+      "id": "pu",
+      "label": "PU"
+    },
+    {
+      "id": "acrylic",
+      "label": "Acrylic"
+    },
+    {
+      "id": "screws",
+      "label": "Screws"
+    },
+    {
+      "id": "anchors",
+      "label": "Anchors"
+    },
+    {
+      "id": "rivets",
+      "label": "Rivets"
+    },
+    {
+      "id": "tape",
+      "label": "Tape"
+    },
+    {
+      "id": "painting",
+      "label": "Painting"
+    },
+    {
+      "id": "ceiling",
+      "label": "Ceiling"
+    },
+    {
+      "id": "passenger_lift",
+      "label": "Passenger Lift"
+    },
+    {
+      "id": "home_lift",
+      "label": "Home Lift"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    },
+    {
+      "id": "consumables",
+      "label": "Power Tools"
+    },
+    {
+      "id": "concrete",
+      "label": "Concrete"
+    },
+    {
+      "id": "compaction",
+      "label": "Compaction"
+    },
+    {
+      "id": "lifting",
+      "label": "Lifting"
+    },
+    {
+      "id": "access",
+      "label": "Access"
+    },
+    {
+      "id": "scaffolding",
+      "label": "Scaffolding"
+    },
+    {
+      "id": "welding",
+      "label": "Welding"
+    },
+    {
+      "id": "cutting",
+      "label": "Cutting"
+    },
+    {
+      "id": "grinding",
+      "label": "Grinding"
+    },
+    {
+      "id": "abrasives",
+      "label": "Abrasives"
+    },
+    {
+      "id": "cleaning",
+      "label": "Cleaning"
+    },
+    {
+      "id": "marking",
+      "label": "Marking"
+    },
+    {
+      "id": "batteries",
+      "label": "Batteries"
+    },
+    {
+      "id": "wayfinding",
+      "label": "Wayfinding"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    },
+    {
+      "id": "reception",
+      "label": "Reception"
+    },
+    {
+      "id": "toilet",
+      "label": "Toilet"
+    },
+    {
+      "id": "parking",
+      "label": "Parking"
+    },
+    {
+      "id": "chemical",
+      "label": "Chemical"
+    },
+    {
+      "id": "fasteners",
+      "label": "Fasteners"
+    },
+    {
+      "id": "tapes_protection",
+      "label": "Tapes & Protection"
+    },
+    {
+      "id": "hospital_doors",
+      "label": "Hospital Doors"
+    },
+    {
+      "id": "wall_protection",
+      "label": "Wall Protection"
+    },
+    {
+      "id": "flooring",
+      "label": "Flooring"
+    },
+    {
+      "id": "medical_gas",
+      "label": "Medical Gas"
+    },
+    {
+      "id": "lighting",
+      "label": "Lighting"
+    },
+    {
+      "id": "sanitary",
+      "label": "Sanitary"
+    },
+    {
+      "id": "partitions",
+      "label": "Partitions"
+    },
+    {
+      "id": "furniture",
+      "label": "Furniture"
+    },
+    {
+      "id": "storage",
+      "label": "Storage"
+    },
+    {
+      "id": "sink",
+      "label": "Sink"
+    },
+    {
+      "id": "tap",
+      "label": "Tap"
+    },
+    {
+      "id": "dock",
+      "label": "Dock"
+    },
+    {
+      "id": "door",
+      "label": "Door"
+    },
+    {
+      "id": "racking",
+      "label": "Racking"
+    },
+    {
+      "id": "ventilation",
+      "label": "Ventilation"
+    },
+    {
+      "id": "appliances",
+      "label": "Equipment"
+    },
+    {
+      "id": "identification",
+      "label": "Identification"
+    },
+    {
+      "id": "grass",
+      "label": "Grass"
+    },
+    {
+      "id": "track",
+      "label": "Track"
+    },
+    {
+      "id": "seating",
+      "label": "Seating"
+    },
+    {
+      "id": "teaching",
+      "label": "Teaching"
+    },
+    {
+      "id": "writing",
+      "label": "Writing"
+    },
+    {
+      "id": "bathroom",
+      "label": "Bathroom"
+    },
+    {
+      "id": "spa",
+      "label": "Spa"
+    },
+    {
+      "id": "fireplace",
+      "label": "Fireplace"
+    },
+    {
+      "id": "wine_storage",
+      "label": "Wine Storage"
+    },
+    {
+      "id": "security",
+      "label": "Security"
+    },
+    {
+      "id": "mcb",
+      "label": "Protection"
+    },
+    {
+      "id": "expansion_joint",
+      "label": "Expansion Joint"
+    },
+    {
+      "id": "facade",
+      "label": "Facade"
+    },
+    {
+      "id": "digital",
+      "label": "Digital"
+    },
+    {
+      "id": "management",
+      "label": "Management"
+    },
+    {
+      "id": "consumable",
+      "label": "Consumable"
+    }
+  ],
+  "interior": [
+    {
+      "id": "tile_adhesives",
+      "label": "Tile Adhesives"
+    },
+    {
+      "id": "vitrified_tiles",
+      "label": "Vitrified Tiles"
+    },
+    {
+      "id": "granite",
+      "label": "Granite"
+    },
+    {
+      "id": "marble",
+      "label": "Marble"
+    },
+    {
+      "id": "quartz",
+      "label": "Quartz"
+    },
+    {
+      "id": "profiles",
+      "label": "Profiles"
+    },
+    {
+      "id": "skirting",
+      "label": "Skirting"
+    },
+    {
+      "id": "plywood",
+      "label": "Boards"
+    },
+    {
+      "id": "laminate",
+      "label": "Laminate"
+    },
+    {
+      "id": "veneer",
+      "label": "Veneer"
+    },
+    {
+      "id": "edge_band",
+      "label": "Edge Band"
+    },
+    {
+      "id": "paints",
+      "label": "Paint System"
+    },
+    {
+      "id": "gypsum",
+      "label": "Gypsum"
+    },
+    {
+      "id": "grid",
+      "label": "Grid"
+    },
+    {
+      "id": "mineral_fibre",
+      "label": "Mineral Fibre"
+    },
+    {
+      "id": "wallpaper",
+      "label": "Wallpaper"
+    },
+    {
+      "id": "wall_panel",
+      "label": "Wall Panel"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    },
+    {
+      "id": "wall",
+      "label": "Wall"
+    },
+    {
+      "id": "ceiling",
+      "label": "Ceiling"
+    },
+    {
+      "id": "foam",
+      "label": "Foam"
+    },
+    {
+      "id": "door",
+      "label": "Door"
+    },
+    {
+      "id": "floor",
+      "label": "Floor"
+    },
+    {
+      "id": "curtains",
+      "label": "Curtains"
+    },
+    {
+      "id": "blinds",
+      "label": "Blinds"
+    },
+    {
+      "id": "metal",
+      "label": "Metal"
+    },
+    {
+      "id": "lighting",
+      "label": "Lighting"
+    },
+    {
+      "id": "bathroom",
+      "label": "Bathroom"
+    },
+    {
+      "id": "countertop",
+      "label": "Countertop"
+    },
+    {
+      "id": "panel",
+      "label": "Panel"
+    },
+    {
+      "id": "decor",
+      "label": "Decor"
+    },
+    {
+      "id": "access",
+      "label": "Access"
+    },
+    {
+      "id": "acoustic",
+      "label": "Acoustic"
+    }
+  ],
+  "doors_windows": [
+    {
+      "id": "door_shutters",
+      "label": "Door Shutters"
+    },
+    {
+      "id": "aluminium",
+      "label": "Aluminium"
+    },
+    {
+      "id": "hinges",
+      "label": "Hinges"
+    },
+    {
+      "id": "locks",
+      "label": "Locks"
+    },
+    {
+      "id": "handles",
+      "label": "Handles"
+    },
+    {
+      "id": "door_closer",
+      "label": "Door Closer"
+    },
+    {
+      "id": "drawer_systems",
+      "label": "Drawer Systems"
+    },
+    {
+      "id": "sliding",
+      "label": "Sliding"
+    },
+    {
+      "id": "lift_systems",
+      "label": "Lift Systems"
+    }
+  ],
+  "architectural": [
+    {
+      "id": "curtain_wall",
+      "label": "Curtain Wall"
+    },
+    {
+      "id": "glass",
+      "label": "Architectural"
+    },
+    {
+      "id": "interior",
+      "label": "Interior"
+    },
+    {
+      "id": "acp",
+      "label": "ACP"
+    },
+    {
+      "id": "hpl",
+      "label": "HPL"
+    },
+    {
+      "id": "film",
+      "label": "Film"
+    },
+    {
+      "id": "cladding",
+      "label": "Cladding"
+    },
+    {
+      "id": "louvers",
+      "label": "Louvers"
+    },
+    {
+      "id": "sunshade",
+      "label": "Sunshade"
+    },
+    {
+      "id": "mesh",
+      "label": "Mesh"
+    },
+    {
+      "id": "stone",
+      "label": "Stone"
+    }
+  ],
+  "electrical": [
+    {
+      "id": "wires",
+      "label": "Wires"
+    },
+    {
+      "id": "switches",
+      "label": "Switches"
+    },
+    {
+      "id": "led",
+      "label": "LED"
+    },
+    {
+      "id": "cctv",
+      "label": "CCTV"
+    },
+    {
+      "id": "networking",
+      "label": "Networking"
+    },
+    {
+      "id": "wifi",
+      "label": "WiFi"
+    },
+    {
+      "id": "conduit",
+      "label": "Conduit"
+    },
+    {
+      "id": "boxes",
+      "label": "Boxes"
+    },
+    {
+      "id": "mcb",
+      "label": "MCB"
+    },
+    {
+      "id": "db",
+      "label": "DB"
+    },
+    {
+      "id": "cable_tie",
+      "label": "Cable Tie"
+    },
+    {
+      "id": "lugs",
+      "label": "Lugs"
+    },
+    {
+      "id": "ferrules",
+      "label": "Ferrules"
+    },
+    {
+      "id": "panels",
+      "label": "Panels"
+    },
+    {
+      "id": "inverter",
+      "label": "Inverter"
+    },
+    {
+      "id": "mounting",
+      "label": "Mounting"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    },
+    {
+      "id": "power_cable",
+      "label": "Power Cable"
+    },
+    {
+      "id": "earthing",
+      "label": "Earthing"
+    },
+    {
+      "id": "control",
+      "label": "Control"
+    },
+    {
+      "id": "emergency",
+      "label": "Emergency"
+    },
+    {
+      "id": "outdoor",
+      "label": "Outdoor"
+    },
+    {
+      "id": "glass",
+      "label": "Architectural"
+    },
+    {
+      "id": "decorative",
+      "label": "Decorative"
+    },
+    {
+      "id": "landscape",
+      "label": "Landscape"
+    },
+    {
+      "id": "power_backup",
+      "label": "Power Backup"
+    },
+    {
+      "id": "lightning_protection",
+      "label": "Lightning Protection"
+    },
+    {
+      "id": "cable_tray",
+      "label": "Cable Tray"
+    },
+    {
+      "id": "busbar",
+      "label": "Busbar"
+    }
+  ],
+  "smart_home": [
+    {
+      "id": "smart_home",
+      "label": "Smart Home"
+    },
+    {
+      "id": "voice_assistant",
+      "label": "Voice Assistant"
+    },
+    {
+      "id": "av_receiver",
+      "label": "AV Receiver"
+    },
+    {
+      "id": "speakers",
+      "label": "Speakers"
+    },
+    {
+      "id": "subwoofer",
+      "label": "Subwoofer"
+    },
+    {
+      "id": "center_speaker",
+      "label": "Center Speaker"
+    },
+    {
+      "id": "projector",
+      "label": "Projector"
+    },
+    {
+      "id": "projector_screen",
+      "label": "Projector Screen"
+    },
+    {
+      "id": "hdmi",
+      "label": "HDMI"
+    },
+    {
+      "id": "speaker_cable",
+      "label": "Speaker Cable"
+    },
+    {
+      "id": "home_automation",
+      "label": "Smart Controls"
+    },
+    {
+      "id": "access_control",
+      "label": "Access Control"
+    },
+    {
+      "id": "video_door_phone",
+      "label": "Video Door Phone"
+    },
+    {
+      "id": "display",
+      "label": "Display"
+    },
+    {
+      "id": "ups",
+      "label": "UPS"
+    },
+    {
+      "id": "rack",
+      "label": "Rack"
+    },
+    {
+      "id": "power",
+      "label": "Power"
+    },
+    {
+      "id": "cooling",
+      "label": "Cooling"
+    },
+    {
+      "id": "cable_mgmt",
+      "label": "Cable Mgmt"
+    },
+    {
+      "id": "sensors",
+      "label": "Sensors"
+    },
+    {
+      "id": "bms",
+      "label": "BMS"
+    },
+    {
+      "id": "meters",
+      "label": "Meters"
+    },
+    {
+      "id": "perimeter",
+      "label": "Perimeter"
+    },
+    {
+      "id": "intrusion",
+      "label": "Intrusion"
+    }
+  ],
+  "plumbing": [
+    {
+      "id": "pipes",
+      "label": "Pipes"
+    },
+    {
+      "id": "pipe_fittings",
+      "label": "Pipe Fittings"
+    },
+    {
+      "id": "sanitaryware",
+      "label": "Sanitaryware"
+    },
+    {
+      "id": "cp_fittings",
+      "label": "CP Fittings"
+    },
+    {
+      "id": "water_tank",
+      "label": "Water Tank"
+    },
+    {
+      "id": "pump",
+      "label": "Pump"
+    },
+    {
+      "id": "drainage",
+      "label": "Drainage"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    },
+    {
+      "id": "kitchen_sink",
+      "label": "Kitchen Sink"
+    },
+    {
+      "id": "piping",
+      "label": "Piping"
+    },
+    {
+      "id": "valves",
+      "label": "Valves"
+    },
+    {
+      "id": "finish",
+      "label": "Finish"
+    },
+    {
+      "id": "appliances",
+      "label": "Equipment"
+    },
+    {
+      "id": "chemical",
+      "label": "Chemical"
+    },
+    {
+      "id": "treatment",
+      "label": "Treatment"
+    }
+  ],
+  "hvac": [
+    {
+      "id": "air_conditioning",
+      "label": "Air Conditioning"
+    },
+    {
+      "id": "ducting",
+      "label": "Ducting"
+    },
+    {
+      "id": "insulation",
+      "label": "Insulation"
+    },
+    {
+      "id": "diffusers",
+      "label": "Diffusers"
+    },
+    {
+      "id": "grilles",
+      "label": "Grilles"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    }
+  ],
+  "fire_safety": [
+    {
+      "id": "fire_safety",
+      "label": "Fire Safety"
+    },
+    {
+      "id": "sprinklers",
+      "label": "Sprinklers"
+    },
+    {
+      "id": "pumps",
+      "label": "Pumps"
+    },
+    {
+      "id": "pipes",
+      "label": "Pipes"
+    },
+    {
+      "id": "control",
+      "label": "Control"
+    },
+    {
+      "id": "detectors",
+      "label": "Detectors"
+    },
+    {
+      "id": "accessories",
+      "label": "Accessories"
+    },
+    {
+      "id": "site",
+      "label": "Site"
+    }
+  ],
+  "modular_kitchen": [
+    {
+      "id": "kitchen_hardware",
+      "label": "Hardware"
+    },
+    {
+      "id": "countertop",
+      "label": "Countertop"
+    },
+    {
+      "id": "appliance",
+      "label": "Appliance"
+    },
+    {
+      "id": "sink",
+      "label": "Sink"
+    },
+    {
+      "id": "appliances",
+      "label": "Equipment"
+    },
+    {
+      "id": "service",
+      "label": "Service"
+    },
+    {
+      "id": "furniture",
+      "label": "Furniture"
+    }
+  ],
+  "furniture": [
+    {
+      "id": "living",
+      "label": "Living"
+    },
+    {
+      "id": "dining",
+      "label": "Dining"
+    },
+    {
+      "id": "bedroom",
+      "label": "Bedroom"
+    },
+    {
+      "id": "storage",
+      "label": "Storage"
+    },
+    {
+      "id": "workstation",
+      "label": "Workstation"
+    },
+    {
+      "id": "chair",
+      "label": "Chair"
+    },
+    {
+      "id": "conference",
+      "label": "Conference"
+    },
+    {
+      "id": "reception",
+      "label": "Reception"
+    },
+    {
+      "id": "guest_room",
+      "label": "Guest Room"
+    },
+    {
+      "id": "restaurant",
+      "label": "Restaurant"
+    },
+    {
+      "id": "banquet",
+      "label": "Banquet"
+    },
+    {
+      "id": "bathroom",
+      "label": "Bathroom"
+    },
+    {
+      "id": "door",
+      "label": "Door"
+    },
+    {
+      "id": "stationery",
+      "label": "Stationery"
+    },
+    {
+      "id": "printing",
+      "label": "Printing"
+    },
+    {
+      "id": "it",
+      "label": "IT"
+    },
+    {
+      "id": "av",
+      "label": "AV"
+    }
+  ],
+  "landscape": [
+    {
+      "id": "pavers",
+      "label": "Paving"
+    },
+    {
+      "id": "stone",
+      "label": "Stone"
+    },
+    {
+      "id": "decking",
+      "label": "Decking"
+    },
+    {
+      "id": "lawn",
+      "label": "Lawn"
+    },
+    {
+      "id": "plants",
+      "label": "Plants"
+    },
+    {
+      "id": "mulch",
+      "label": "Mulch"
+    },
+    {
+      "id": "soil",
+      "label": "Soil"
+    },
+    {
+      "id": "fertilizer",
+      "label": "Fertilizer"
+    },
+    {
+      "id": "irrigation",
+      "label": "Irrigation"
+    },
+    {
+      "id": "lighting",
+      "label": "Lighting"
+    },
+    {
+      "id": "compound",
+      "label": "Compound"
+    },
+    {
+      "id": "fence",
+      "label": "Fence"
+    },
+    {
+      "id": "gate",
+      "label": "Gate"
+    },
+    {
+      "id": "road",
+      "label": "Road"
+    },
+    {
+      "id": "drainage",
+      "label": "Drainage"
+    },
+    {
+      "id": "appliances",
+      "label": "Equipment"
+    },
+    {
+      "id": "safety",
+      "label": "Safety"
+    },
+    {
+      "id": "shade",
+      "label": "Shade"
+    },
+    {
+      "id": "street_furniture",
+      "label": "Street Furniture"
+    },
+    {
+      "id": "water_feature",
+      "label": "Water Feature"
+    },
+    {
+      "id": "gazebo",
+      "label": "Gazebo"
+    },
+    {
+      "id": "outdoor_furniture",
+      "label": "Outdoor Furniture"
+    }
+  ]
+}

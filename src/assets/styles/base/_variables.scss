@@ -1,0 +1,204 @@
+// Design tokens — ported from globals.css + tailwind.config.js
+
+@use "sass:string";
+
+@function resolve-hsl($channels) {
+  @return string.unquote("hsl(#{$channels})");
+}
+
+@function hsl-alpha($channels, $alpha) {
+  @return string.unquote("hsl(#{$channels} / #{$alpha})");
+}
+
+// Brand (hex aliases for readable token usage)
+$agara-cream: #f7f4ef;
+$agara-charcoal: #222222;
+$accent: #b89a72;
+$background: #f8f5f1;
+$card: #fcfaf8;
+$text: #2b2825;
+$secondary-text: #706a63;
+$color-border-hex: #e7ded3;
+
+// Semantic hex aliases (Stage 3 architecture — values match existing design)
+$color-background-hex: $background;
+$color-card-hex: $card;
+$color-primary-hex: $text;
+$color-secondary-hex: $secondary-text;
+$color-accent-hex: $accent;
+
+
+// HSL channel tokens (match :root CSS vars)
+$primary-h: 33 27% 50%;
+$primary-foreground-h: 0 0% 100%;
+$secondary-h: 33 18% 84%;
+$secondary-foreground-h: 23 13% 17%;
+$accent-h: 33 27% 50%;
+$accent-foreground-h: 0 0% 100%;
+$gold-h: 30 27% 49%;
+$gold-foreground-h: 0 0% 100%;
+
+$background-h: 28 16% 95%;
+$foreground-h: 23 13% 17%;
+$body-h: 22 12% 42%;
+$heading-h: 23 13% 17%;
+$card-h: 40 96% 98%;
+$card-foreground-h: 23 13% 17%;
+$popover-h: 40 96% 98%;
+$popover-foreground-h: 23 13% 17%;
+$surface-h: 29 18% 92%;
+$surface-hover-h: 29 16% 88%;
+$muted-h: 22 11% 57%;
+$muted-foreground-h: 22 11% 57%;
+
+$destructive-h: 0 65% 55%;
+$destructive-foreground-h: 28 16% 95%;
+$success-h: 137 20% 38%;
+$success-foreground-h: 28 16% 95%;
+$warning-h: 33 27% 50%;
+$warning-foreground-h: 0 0% 100%;
+$info-h: 205 25% 55%;
+$info-foreground-h: 28 16% 95%;
+
+$border-h: 30 22% 82%;
+$divider-h: 30 18% 88%;
+$input-h: 30 22% 82%;
+$ring-h: 33 27% 50%;
+
+$chart-1-h: 30 36% 46%;
+$chart-2-h: 207 27% 54%;
+$chart-3-h: 127 19% 45%;
+$chart-4-h: 32 54% 51%;
+$chart-5-h: 0 42% 54%;
+
+// Resolved colors
+$color-primary: resolve-hsl($primary-h);
+$color-primary-foreground: resolve-hsl($primary-foreground-h);
+$color-secondary: resolve-hsl($secondary-h);
+$color-secondary-foreground: resolve-hsl($secondary-foreground-h);
+$color-accent: resolve-hsl($accent-h);
+$color-accent-foreground: resolve-hsl($accent-foreground-h);
+$color-gold: resolve-hsl($gold-h);
+$color-background: resolve-hsl($background-h);
+$color-foreground: resolve-hsl($foreground-h);
+$color-body: resolve-hsl($body-h);
+$color-heading: resolve-hsl($heading-h);
+$color-card: resolve-hsl($card-h);
+$color-surface: resolve-hsl($surface-h);
+$color-surface-hover: resolve-hsl($surface-hover-h);
+$color-muted: resolve-hsl($muted-h);
+$color-muted-foreground: resolve-hsl($muted-foreground-h);
+$color-destructive: resolve-hsl($destructive-h);
+$color-success: resolve-hsl($success-h);
+$color-warning: resolve-hsl($warning-h);
+$color-info: resolve-hsl($info-h);
+$color-border: resolve-hsl($border-h);
+$color-divider: resolve-hsl($divider-h);
+$color-input: resolve-hsl($input-h);
+$color-ring: resolve-hsl($ring-h);
+
+// Spacing (rem scale aligned with Tailwind)
+$space-0: 0;
+$space-0_5: 0.125rem;
+$space-1: 0.25rem;
+$space-1_5: 0.375rem;
+$space-2: 0.5rem;
+$space-2_5: 0.625rem;
+$space-3: 0.75rem;
+$space-3_5: 0.875rem;
+$space-4: 1rem;
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-7: 1.75rem;
+$space-8: 2rem;
+$space-9: 2.25rem;
+$space-10: 2.5rem;
+$space-11: 2.75rem;
+$space-12: 3rem;
+$space-14: 3.5rem;
+$space-16: 4rem;
+$space-20: 5rem;
+$space-24: 6rem;
+$space-28: 7rem;
+$space-32: 8rem;
+
+// Radius
+$radius: 1rem;
+$radius-sm: calc(#{$radius} - 6px);
+$radius-md: calc(#{$radius} - 3px);
+$radius-lg: 0.875rem;
+$radius-xl: 1rem;
+$radius-2xl: 1.125rem;
+$radius-3xl: 1.25rem;
+$radius-4xl: 1.5rem;
+$radius-full: 9999px;
+$radius-glass: 14px;
+$radius-featured: 1.5rem;
+$radius-32: 1.5rem;
+
+// Typography
+$font-elms: "Elms Sans Variable", "Elms Sans", system-ui, sans-serif;
+$font-inter: "Inter", system-ui, sans-serif;
+$font-serif: "Cormorant Garamond", Georgia, serif;
+
+$tracking-tight: -0.02em;
+$tracking-normal: 0.01em;
+$tracking-wide: 0.16em;
+$tracking-wider: 0.2em;
+$tracking-widest: 0.24em;
+
+// Shadows
+$shadow-card: 0 14px 36px -18px rgba(15, 23, 42, 0.14), 0 6px 16px -10px rgba(15, 23, 42, 0.08);
+$shadow-card-hover: 0 20px 48px -20px rgba(15, 23, 42, 0.18), 0 10px 22px -14px rgba(15, 23, 42, 0.1);
+$shadow-glass: 0 16px 38px rgba(15, 23, 42, 0.12);
+$shadow-glass-sm: 0 10px 24px rgba(15, 23, 42, 0.08);
+$shadow-glass-dark: 0 16px 40px rgba(15, 23, 42, 0.2);
+$shadow-agara-soft: 0 10px 28px rgba(15, 23, 42, 0.08);
+$shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.1);
+$shadow-agara-glass: 0 24px 60px rgba(15, 23, 42, 0.14), 0 10px 24px rgba(15, 23, 42, 0.08);
+$shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+$shadow-md: 0 6px 12px -3px rgba(15, 23, 42, 0.12), 0 3px 6px -2px rgba(15, 23, 42, 0.08);
+
+// Glass
+$glass-blur: 28px;
+$glass-blur-premium: 38px;
+$blur-glass: $glass-blur-premium;
+$glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.18));
+$glass-border: rgba(255, 255, 255, 0.4);
+
+// Font sizes (refined for a more compact premium UI)
+$font-size-xs: 0.72rem;
+$font-size-sm: 0.8rem;
+$font-size-base: 0.9rem;
+$font-size-lg: 1rem;
+$font-size-xl: 1.125rem;
+$font-size-2xl: 1.25rem;
+$font-size-3xl: 1.5rem;
+$font-size-4xl: 1.875rem;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.05;
+$line-height-snug: 1.25;
+$line-height-normal: 1.5;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 200ms ease-out;
+$transition-slow: 300ms ease;
+$ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+// Breakpoints (Tailwind defaults)
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+
+// Z-index
+$z-navbar: 50;
+$z-modal: 100;
+$z-lightbox: 110;

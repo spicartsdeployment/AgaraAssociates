@@ -1,0 +1,16 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.project-gallery__grid {
+  margin-top: $space-6;
+  columns: 1;
+  gap: $space-4;
+
+  @include respond-to(sm) {
+    columns: 2;
+  }
+
+  @include respond-to(lg) {
+    columns: 3;
+  }
+}

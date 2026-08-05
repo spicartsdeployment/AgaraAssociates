@@ -1,0 +1,23 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.form-field {
+  > * + * {
+    margin-top: $space-2;
+  }
+
+  &__label {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+  }
+
+  &__required {
+    margin-left: $space-0_5;
+    color: $color-destructive;
+  }
+
+  &__hint {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+}

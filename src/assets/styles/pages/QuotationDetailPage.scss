@@ -1,0 +1,143 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.quotation-detail-page {
+  @include page-root;
+
+  &__back-link {
+    @include page-back-link;
+  }
+
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      flex-direction: row;
+    }
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    @include respond-to(lg) {
+      width: 16rem;
+    }
+  }
+
+  &__sidebar-title {
+    font-weight: 600;
+  }
+
+  &__version-card {
+    &--active {
+      border-color: $color-primary;
+    }
+  }
+
+  &__version-content {
+    padding: $space-4;
+  }
+
+  &__version-label {
+    font-weight: 500;
+  }
+
+  &__version-amount {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin-top: $space-1;
+  }
+
+  &__version-meta {
+    font-size: 0.75rem;
+    @include text-muted;
+    margin-top: $space-1;
+  }
+
+  &__main-card {
+    flex: 1;
+  }
+
+  &__main-header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__main-heading {
+    min-width: 0;
+  }
+
+  &__main-title {
+    font-size: 1.25rem;
+
+    @include respond-to(sm) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__main-subtitle {
+    @include text-muted;
+    margin-top: $space-1;
+  }
+
+  &__main-status {
+    flex-shrink: 0;
+  }
+
+  &__main-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__line-items {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__line-item {
+    display: flex;
+    justify-content: space-between;
+    padding-top: $space-2;
+    padding-bottom: $space-2;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__line-amount {
+    font-weight: 500;
+  }
+
+  &__total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border;
+  }
+
+  &__signature-card {
+    border-style: dashed;
+    background-color: hsl-alpha($muted-h, 0.3);
+  }
+
+  &__signature-content {
+    padding: $space-4;
+    text-align: center;
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+}

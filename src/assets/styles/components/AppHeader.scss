@@ -1,0 +1,234 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  height: $space-14;
+  align-items: center;
+  gap: $space-3;
+  padding-left: $space-4;
+  padding-right: $space-4;
+  border-bottom: 1px solid $color-border;
+  background-color: hsl-alpha($surface-h, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  @include respond-to(lg) {
+    padding-left: $space-5;
+    padding-right: $space-5;
+  }
+
+  &--glass {
+    @include glass-subtle;
+    border-bottom: 1px solid hsl-alpha($border-h, 0.4);
+    background-color: transparent;
+    backdrop-filter: blur($glass-blur);
+    -webkit-backdrop-filter: blur($glass-blur);
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    margin-right: $space-3;
+    min-width: 0;
+  }
+
+  &__menu-btn {
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    height: $space-10;
+    flex: 1;
+    max-width: 28rem;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    background-color: hsl-alpha($muted-h, 0.5);
+    padding-left: $space-3;
+    padding-right: $space-3;
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    cursor: pointer;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-muted;
+    }
+  }
+
+  &__search-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+  }
+
+  &__search-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__kbd {
+    margin-left: auto;
+    pointer-events: none;
+    display: none;
+    height: $space-5;
+    user-select: none;
+    align-items: center;
+    gap: $space-1;
+    border-radius: $radius-sm;
+    border: 1px solid $color-border;
+    background-color: $color-background;
+    padding-left: $space-1_5;
+    padding-right: $space-1_5;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+
+    @include respond-to(md) {
+      display: inline-flex;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  &__project-btn {
+    display: none;
+    gap: $space-2;
+    border-radius: $radius-xl;
+
+    @include respond-to(sm) {
+      display: inline-flex;
+    }
+  }
+
+  &__project-name {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+  }
+
+  &__project-chevron {
+    width: $space-4;
+    height: $space-4;
+    opacity: 0.5;
+  }
+
+  &__icon-btn {
+    position: relative;
+    border-radius: $radius-xl;
+  }
+
+  &__bell-icon {
+    width: $space-5;
+    height: $space-5;
+  }
+
+  &__badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    display: flex;
+    height: $space-4;
+    width: $space-4;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background-color: $color-destructive;
+    font-size: 10px;
+    font-weight: 700;
+    color: $color-foreground;
+  }
+
+  &__notification-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-0_5;
+    padding-top: $space-2;
+    padding-bottom: $space-2;
+  }
+
+  &__notification-title {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+
+    &--unread {
+      color: $color-primary;
+    }
+  }
+
+  &__notification-message {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__calendar-btn {
+    display: none;
+    border-radius: $radius-xl;
+
+    @include respond-to(sm) {
+      display: inline-flex;
+    }
+  }
+
+  &__action-icon {
+    width: $space-5;
+    height: $space-5;
+  }
+
+  &__avatar-btn {
+    position: relative;
+    height: $space-10;
+    width: $space-10;
+    border-radius: $radius-full;
+  }
+
+  &__avatar {
+    height: $space-9;
+    width: $space-9;
+  }
+
+  &__avatar-image {
+    object-fit: cover;
+    object-position: top;
+  }
+
+  &__avatar-fallback {
+    background-color: $color-secondary;
+    color: $color-foreground;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__user-role {
+    font-size: $space-3;
+    font-weight: 400;
+    color: $color-muted-foreground;
+  }
+
+  &__project-menu {
+    width: 14rem;
+  }
+
+  &__notifications-menu {
+    width: 20rem;
+  }
+}

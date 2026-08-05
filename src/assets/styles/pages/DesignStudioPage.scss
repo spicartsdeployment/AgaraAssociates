@@ -1,0 +1,9 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.design-studio-page {
+  &__loading {
+    @include page-loading;
+  }
+}

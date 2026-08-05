@@ -1,0 +1,1 @@
+export { Lightbox, ProjectLightbox, Lightbox as default } from "./Lightbox";

@@ -1,0 +1,279 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.project-onboarding-wizard {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  @include fade-in;
+
+  &__back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    text-decoration: none;
+    margin-bottom: $space-4;
+    @include transition(color);
+
+    &:hover {
+      color: $color-foreground;
+    }
+  }
+
+  &__back-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__heading {
+    font-size: $space-7 + $space-1;
+    font-weight: 700;
+    letter-spacing: $tracking-tight;
+  }
+
+  &__subheading {
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__steps {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    overflow-x: auto;
+    padding-bottom: $space-2;
+  }
+
+  &__step-group {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    flex-shrink: 0;
+  }
+
+  &__step-indicator {
+    display: flex;
+    height: $space-8;
+    width: $space-8;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    font-size: $space-3;
+    font-weight: 600;
+    @include transition(background-color color box-shadow);
+
+    &--complete {
+      background-color: $color-primary;
+      color: #ffffff;
+    }
+
+    &--current {
+      background-color: $color-primary;
+      color: #ffffff;
+      box-shadow: 0 0 0 4px hsl-alpha($primary-h, 0.2);
+    }
+
+    &--upcoming {
+      background-color: $color-muted;
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__step-check {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__step-label {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    display: none;
+
+    @include respond-to(sm) {
+      display: inline;
+    }
+
+    &--current {
+      color: $color-foreground;
+    }
+
+    &--muted {
+      color: $color-muted-foreground;
+    }
+  }
+
+  &__step-divider {
+    width: $space-8;
+    height: 1px;
+    background-color: $color-border;
+    margin-left: $space-1;
+    margin-right: $space-1;
+  }
+
+  &__basics-grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field-span-2 {
+    @include respond-to(sm) {
+      grid-column: span 2;
+    }
+  }
+
+  &__services {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__services-title {
+    font-size: $space-4 + $space-0_5;
+    font-weight: 600;
+  }
+
+  &__services-text {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__team-grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__team-member {
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    padding: $space-1_5 $space-3;
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    @include transition(background-color border-color color);
+
+    &--selected {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.1);
+      color: $color-primary;
+    }
+
+    &:hover:not(&--selected) {
+      background-color: $color-muted;
+    }
+  }
+
+  &__review-grid {
+    display: grid;
+    gap: $space-4;
+    font-size: $space-3 + $space-0_5;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__review-label {
+    color: $color-muted-foreground;
+  }
+
+  &__review-value {
+    font-weight: 600;
+  }
+
+  &__services-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+    margin-top: $space-2;
+  }
+
+  &__construction-summary {
+    padding: $space-4;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($secondary-h, 0.05);
+    border: 1px solid hsl-alpha($secondary-h, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__construction-title {
+    font-weight: 600;
+    color: $color-secondary;
+  }
+
+  &__construction-grid {
+    display: grid;
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__construction-note {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    padding-top: $space-2;
+  }
+
+  &__team-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__review-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border;
+  }
+
+  &__nav-icon {
+    width: $space-4;
+    height: $space-4;
+  }
+
+  &__spin {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

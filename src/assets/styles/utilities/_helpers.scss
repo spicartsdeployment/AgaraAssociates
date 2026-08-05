@@ -1,0 +1,35 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+@mixin visually-hidden {
+  @include sr-only;
+}
+
+.u-sr-only,
+.u-visually-hidden,
+.visually-hidden {
+  @include sr-only;
+}
+
+.u-flex-center,
+.flex-center {
+  @include flex-center;
+}
+
+.u-flex-between {
+  @include flex-between;
+}
+
+.u-container {
+  @include container;
+}
+
+.u-text-center,
+.text-center {
+  text-align: center;
+}
+
+.u-hidden,
+.hidden {
+  display: none;
+}

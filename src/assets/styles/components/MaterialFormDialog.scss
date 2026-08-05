@@ -1,0 +1,54 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.material-form-dialog {
+  &__content {
+    max-width: 32rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  &__form {
+    > * + * {
+      margin-top: $space-4;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__field {
+    > * + * {
+      margin-top: $space-2;
+    }
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__input {
+    border-radius: $radius-xl;
+  }
+
+  &__textarea {
+    border-radius: $radius-xl;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $space-2;
+  }
+
+  &__btn {
+    border-radius: $radius-xl;
+  }
+}

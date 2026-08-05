@@ -1,0 +1,70 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.dashboard-client {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding-bottom: $space-20;
+  @include fade-in;
+
+  @include respond-to(lg) {
+    padding-bottom: 0;
+    height: calc(100vh - 4.5rem);
+    max-height: calc(100vh - 4.5rem);
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+
+    @include respond-to(lg) {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      flex: 1;
+      min-height: 0;
+    }
+  }
+
+  &__hero {
+    order: 1;
+
+    @include respond-to(lg) {
+      grid-column: span 3;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__quick-actions {
+    order: 2;
+
+    @include respond-to(lg) {
+      order: unset;
+    }
+  }
+
+  &__alerts {
+    order: 3;
+
+    @include respond-to(lg) {
+      order: unset;
+      grid-column: span 5;
+      min-height: 0;
+      flex: 1;
+    }
+  }
+
+  &__actions {
+    order: 4;
+
+    @include respond-to(lg) {
+      order: unset;
+      grid-column: span 4;
+      min-height: 0;
+      flex: 1;
+    }
+  }
+}

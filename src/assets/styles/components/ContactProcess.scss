@@ -1,0 +1,84 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.contact-process {
+  padding: $space-16 $space-6;
+
+  @include respond-to(lg) {
+    padding: $space-24 $space-10;
+  }
+
+  &__container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba($agara-charcoal, 0.45);
+  }
+
+  &__title {
+    margin-top: $space-3;
+    font-family: $font-serif;
+    font-size: 32px;
+    line-height: 1.25;
+    color: $agara-charcoal;
+
+    @include respond-to(lg) {
+      font-size: 42px;
+    }
+  }
+
+  &__desktop {
+    margin-top: $space-14;
+    display: none;
+
+    @include respond-to(lg) {
+      display: block;
+    }
+  }
+
+  &__desktop-track {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-4;
+  }
+
+  &__desktop-line {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 1.75rem;
+    height: 1px;
+    background: #e7ded3;
+  }
+
+  &__mobile {
+    position: relative;
+    margin-top: $space-12;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__mobile-line {
+    position: absolute;
+    top: $space-4;
+    bottom: $space-4;
+    left: 27px;
+    width: 1px;
+    background: #e7ded3;
+  }
+}

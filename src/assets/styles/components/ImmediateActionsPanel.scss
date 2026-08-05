@@ -1,0 +1,197 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.immediate-actions-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-color: hsl-alpha($accent-h, 0.2);
+
+  @include respond-to(lg) {
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-3 $space-3;
+    border-bottom: 1px solid $color-divider;
+    flex-shrink: 0;
+
+    @include respond-to(sm) {
+      padding-left: $space-4;
+      padding-right: $space-4;
+    }
+  }
+
+  &__header-text {
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-foreground;
+  }
+
+  &__subtitle {
+    font-size: 0.7rem;
+    color: $color-foreground;
+    margin-top: $space-0_5;
+  }
+
+  &__count {
+    font-size: $font-size-sm;
+    font-weight: 700;
+    color: $color-foreground;
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+
+  &__scroll {
+    max-height: 220px;
+
+    @include respond-to(sm) {
+      max-height: 260px;
+    }
+
+    @include respond-to(lg) {
+      flex: 1;
+      height: 0;
+      min-height: 0;
+      max-height: none;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding: $space-2;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-2;
+    padding: $space-2_5;
+    border-radius: $radius-xl;
+    @include transition(background-color);
+
+    @include respond-to(sm) {
+      align-items: center;
+      padding: $space-2 $space-2_5;
+    }
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__item-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin-top: $space-0_5;
+
+    @include respond-to(sm) {
+      margin-top: 0;
+    }
+
+    &--active {
+      color: $color-accent;
+    }
+
+    &--pending {
+      color: hsl-alpha($foreground-h, 0.4);
+    }
+  }
+
+  &__item-body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__item-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: $color-foreground;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    @include respond-to(sm) {
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__item-project {
+    font-size: 0.7rem;
+    color: $color-foreground;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__item-action {
+    height: 2rem;
+    padding-left: $space-2;
+    padding-right: $space-2;
+    font-size: 0.68rem;
+    border-radius: $radius-lg;
+    color: $color-foreground;
+    flex-shrink: 0;
+
+    @include respond-to(lg) {
+      opacity: 0;
+      @include transition(opacity);
+
+      .immediate-actions-panel__item:hover & {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__item-action-link {
+    display: flex;
+    align-items: center;
+    gap: $space-0_5;
+  }
+
+  &__item-action-label {
+    display: none;
+
+    @include respond-to(sm) {
+      display: inline;
+    }
+  }
+
+  &__item-action-icon {
+    width: $space-3;
+    height: $space-3;
+  }
+
+  &__footer {
+    display: none;
+    flex-shrink: 0;
+    border-top: 1px solid $color-divider;
+    padding: $space-2_5 $space-3;
+
+    @include respond-to(lg) {
+      display: block;
+    }
+  }
+
+  &__footer-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: $color-foreground;
+    margin-bottom: $space-2;
+  }
+}

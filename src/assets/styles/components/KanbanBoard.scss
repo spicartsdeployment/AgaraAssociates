@@ -1,0 +1,103 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.kanban-board {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-4;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond-to(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  &__column {
+    border-radius: $radius-2xl;
+    padding: $space-4;
+
+    &--todo {
+      background-color: #f1f5f9;
+    }
+
+    &--in-progress {
+      background-color: #eff6ff;
+    }
+
+    &--inspection {
+      background-color: #fffbeb;
+    }
+
+    &--done {
+      background-color: #f0fdf4;
+    }
+  }
+
+  &__column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $space-4;
+  }
+
+  &__column-title {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 600;
+  }
+
+  &__column-count {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    background-color: #ffffff;
+    border-radius: $radius-full;
+    padding: $space-0_5 $space-2;
+  }
+
+  &__tasks {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__task {
+    cursor: pointer;
+    box-shadow: $shadow-sm;
+  }
+
+  &__task-content {
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__task-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__task-title {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    line-height: 1.375;
+  }
+
+  &__task-badge {
+    flex-shrink: 0;
+    font-size: 10px;
+  }
+
+  &__task-description {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__task-assignee {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+}

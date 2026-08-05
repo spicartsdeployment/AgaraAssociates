@@ -1,0 +1,159 @@
+// =============================================================================
+// Global SCSS entry (Stage 4)
+// Imported once from main.jsx. Pulls in the full foundation stack, then emits
+// application-wide rules. Component/page SCSS remain imported by their JSX.
+// =============================================================================
+
+@use "variables" as *;
+@use "mixins" as *;
+@use "helpers" as *;
+@use "reset";
+@use "typography";
+@use "../animations/keyframes";
+@use "../animations/transitions";
+@use "../utilities/spacing";
+@use "../utilities/flex";
+@use "../utilities/grid";
+@use "../utilities/helpers" as util-helpers;
+
+// -----------------------------------------------------------------------------
+// Design tokens as CSS custom properties (parity with legacy globals.css :root)
+// -----------------------------------------------------------------------------
+
+:root {
+  --primary: #{$primary-h};
+  --primary-foreground: #{$primary-foreground-h};
+  --secondary: #{$secondary-h};
+  --secondary-foreground: #{$secondary-foreground-h};
+  --accent: #{$accent-h};
+  --accent-foreground: #{$accent-foreground-h};
+  --gold: #{$gold-h};
+  --gold-foreground: #{$gold-foreground-h};
+
+  --background: #{$background-h};
+  --foreground: #{$foreground-h};
+  --body: #{$body-h};
+  --heading: #{$heading-h};
+  --card: #{$card-h};
+  --card-foreground: #{$card-foreground-h};
+  --popover: #{$popover-h};
+  --popover-foreground: #{$popover-foreground-h};
+  --surface: #{$surface-h};
+  --surface-hover: #{$surface-hover-h};
+  --muted: #{$muted-h};
+  --muted-foreground: #{$muted-foreground-h};
+
+  --destructive: #{$destructive-h};
+  --destructive-foreground: #{$destructive-foreground-h};
+  --success: #{$success-h};
+  --success-foreground: #{$success-foreground-h};
+  --warning: #{$warning-h};
+  --warning-foreground: #{$warning-foreground-h};
+  --info: #{$info-h};
+  --info-foreground: #{$info-foreground-h};
+
+  --border: #{$border-h};
+  --divider: #{$divider-h};
+  --input: #{$input-h};
+  --ring: #{$ring-h};
+
+  --radius: #{$radius};
+
+  --chart-1: #{$chart-1-h};
+  --chart-2: #{$chart-2-h};
+  --chart-3: #{$chart-3-h};
+  --chart-4: #{$chart-4-h};
+  --chart-5: #{$chart-5-h};
+
+  --font-elms: #{$font-elms};
+  --font-inter: #{$font-inter};
+  --font-serif-display: #{$font-serif};
+}
+
+// -----------------------------------------------------------------------------
+// Body / document chrome (from legacy globals.css @layer base)
+// -----------------------------------------------------------------------------
+
+.agara-page section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+body {
+  background-color: $color-background;
+  color: $color-body;
+  font-family: $font-inter;
+  letter-spacing: $tracking-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Shared surface utilities (from legacy globals.css @layer utilities)
+// -----------------------------------------------------------------------------
+
+.dashboard-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 5%, hsl(30 36% 46% / 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 95%, hsl(33 13% 82% / 0.45) 0%, transparent 50%),
+    linear-gradient(160deg, #f7f5f2 0%, #efebe6 45%, #f7f5f2 100%);
+}
+
+.glass {
+  @include glass-card;
+}
+
+.glass-subtle {
+  @include glass-subtle;
+}
+
+.glass-dark {
+  @include glass-dark;
+}
+
+.glass-pill {
+  border-radius: $radius-full;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.glass-pill-active {
+  border-radius: $radius-full;
+  box-shadow: $shadow-sm;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: hsl-alpha($primary-h, 0.18);
+  color: $color-primary-foreground;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: hsl-alpha($muted-foreground-h, 0.3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsl-alpha($muted-foreground-h, 0.25);
+    border-radius: $radius-full;
+  }
+}
+
+.agara-page {
+  background-color: $agara-cream;
+}
+
+.agara-texture {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse 90% 70% at 15% 0%, rgba(255, 255, 255, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 90% 100%, rgba(34, 34, 34, 0.03) 0%, transparent 50%);
+}
+
+.agara-glass {
+  @include agara-glass;
+}

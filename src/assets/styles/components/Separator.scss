@@ -1,0 +1,17 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.separator {
+  flex-shrink: 0;
+  background-color: $color-border;
+
+  &--horizontal {
+    height: 1px;
+    width: 100%;
+  }
+
+  &--vertical {
+    height: 100%;
+    width: 1px;
+  }
+}

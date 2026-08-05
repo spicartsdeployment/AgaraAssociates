@@ -1,0 +1,10 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.command-palette {
+  &__item-icon {
+    margin-right: $space-2;
+    width: $space-4;
+    height: $space-4;
+  }
+}

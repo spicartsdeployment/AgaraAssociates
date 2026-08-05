@@ -1,0 +1,59 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.social-scroll-bar {
+  position: absolute;
+  right: $space-5;
+  top: 50%;
+  z-index: 40;
+  display: none;
+  transform: translateY(-50%);
+  flex-direction: column;
+  align-items: center;
+  gap: $space-5;
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+
+  @include respond-to(xl) {
+    right: $space-8;
+  }
+
+  &__pill {
+    @include agara-glass;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-3_5;
+    border-radius: $radius-full;
+    padding: $space-3 $space-2_5;
+  }
+
+  &__link {
+    color: rgba($agara-charcoal, 0.65);
+    @include transition(color, $transition-slow);
+
+    &:hover {
+      color: $agara-charcoal;
+    }
+  }
+
+  &__icon {
+    width: $space-3_5;
+    height: $space-3_5;
+  }
+
+  &__divider-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__divider {
+    height: $space-8;
+    width: 1px;
+    background: rgba($agara-charcoal, 0.2);
+  }
+}

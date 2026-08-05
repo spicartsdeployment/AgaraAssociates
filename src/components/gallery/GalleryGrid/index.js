@@ -1,0 +1,1 @@
+export { GalleryGrid, GalleryGrid as default } from "./GalleryGrid";

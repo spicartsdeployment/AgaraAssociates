@@ -1,0 +1,68 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.tabs-list {
+  display: inline-flex;
+  height: 2.75rem;
+  max-width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: auto;
+  border-radius: $radius-xl;
+  background-color: $color-muted;
+  padding: $space-1;
+  color: $color-muted-foreground;
+  scrollbar-width: thin;
+  scrollbar-color: hsl-alpha($muted-foreground-h, 0.3) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: hsl-alpha($muted-foreground-h, 0.25);
+    border-radius: $radius-full;
+  }
+}
+
+.tabs-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: none;
+  border-radius: $radius-md;
+  padding: $space-2 $space-4;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: transparent;
+  // color: inherit;
+  cursor: pointer;
+  @include transition(all);
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-ring;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &[data-state="active"] {
+    background-color: $color-background;
+    color: $color-foreground;
+    box-shadow: $shadow-sm;
+  }
+}
+
+.tabs-content {
+  margin-top: $space-4;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px $color-ring;
+  }
+}

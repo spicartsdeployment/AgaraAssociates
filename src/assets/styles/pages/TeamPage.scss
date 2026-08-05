@@ -1,0 +1,92 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.team-page {
+  @include page-root;
+
+  &__layout {
+    display: grid;
+    gap: $space-6;
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__section-title {
+    font-size: 1.125rem;
+  }
+
+  &__member-list,
+  &__task-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__task-list {
+    gap: $space-2;
+  }
+
+  &__member-row,
+  &__task-row {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-3;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__member-row {
+    align-items: center;
+  }
+
+  &__avatar-fallback {
+    background-color: $color-primary;
+    color: #ffffff;
+    font-size: 0.875rem;
+  }
+
+  &__member-info,
+  &__task-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__member-name {
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  &__member-role {
+    font-size: 0.75rem;
+    @include text-muted;
+    @include text-truncate;
+  }
+
+  &__checkbox {
+    margin-top: $space-1;
+    width: $space-4;
+    height: $space-4;
+    border-radius: $radius-sm;
+    border: 1px solid $color-border;
+    accent-color: $color-primary;
+  }
+
+  &__task-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &--completed {
+      text-decoration: line-through;
+      @include text-muted;
+    }
+  }
+
+  &__task-meta {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+}

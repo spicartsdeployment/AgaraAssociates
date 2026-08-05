@@ -1,0 +1,13 @@
+// Marketing shell layout scaffold (navbar + footer + outlet).
+// Wired when layout styles are extracted in a later stage.
+// Existing MainLayout.jsx imports remain unchanged.
+
+.marketing-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.marketing-layout__main {
+  flex: 1 0 auto;
+}

@@ -1,0 +1,39 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.boq-new-page {
+  &__loading {
+    @include page-loading;
+  }
+
+  &__empty {
+    @include page-root;
+  }
+
+  &__empty-card {
+    border-style: dashed;
+  }
+
+  &__empty-content {
+    padding-top: $space-16;
+    padding-bottom: $space-16;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__empty-title {
+    font-weight: 500;
+  }
+
+  &__empty-text {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__empty-btn {
+    @include btn-rounded-xl;
+  }
+}

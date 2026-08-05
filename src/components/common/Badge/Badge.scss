@@ -1,0 +1,45 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: $radius-full;
+  border: 1px solid transparent;
+  padding: 0.2rem $space-2_5;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  @include transition(color background-color border-color);
+
+  &--default {
+    background-color: $color-primary;
+    color: $color-primary-foreground;
+  }
+
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-secondary-foreground;
+  }
+
+  &--destructive {
+    background-color: $color-destructive;
+    color: resolve-hsl($destructive-foreground-h);
+  }
+
+  &--outline {
+    border-color: $color-border;
+    color: $color-foreground;
+    background-color: transparent;
+  }
+
+  &--success {
+    background-color: $color-success;
+    color: resolve-hsl($success-foreground-h);
+  }
+
+  &--warning {
+    background-color: $color-accent;
+    color: $color-accent-foreground;
+  }
+}

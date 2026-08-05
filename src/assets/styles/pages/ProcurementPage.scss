@@ -1,0 +1,106 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.procurement-page {
+  @include page-root-spacious;
+
+  &__callout {
+    @include page-callout-primary;
+  }
+
+  &__callout-content {
+    @include page-callout-content;
+  }
+
+  &__callout-icon {
+    @include page-callout-icon;
+  }
+
+  &__callout-text {
+    @include page-callout-text;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__section-title {
+    @include page-section-title;
+  }
+
+  &__po-grid {
+    @include page-grid-2;
+  }
+
+  &__po-content {
+    padding: $space-5;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__po-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__po-vendor {
+    font-weight: 600;
+  }
+
+  &__po-project {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__po-meta {
+    @include page-summary-row;
+  }
+
+  &__po-amount {
+    font-weight: 700;
+  }
+
+  &__po-delivery {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+
+  &__table-content {
+    @include page-table-card-content;
+  }
+
+  &__table {
+    @include page-data-table;
+
+    thead tr {
+      background-color: hsl-alpha($muted-h, 0.5);
+    }
+  }
+
+  &__vendor-cell {
+    font-weight: 500;
+  }
+
+  &__stats-grid {
+    @include page-grid-2;
+  }
+
+  &__stat-title {
+    font-size: 1rem;
+  }
+
+  &__stat-value {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+
+  &__stat-label {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+}

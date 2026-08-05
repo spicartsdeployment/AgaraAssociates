@@ -1,0 +1,99 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.featured-project-card {
+  @include agara-glass;
+  width: 300px;
+  padding: $space-5;
+  border-radius: $radius-featured;
+  box-shadow: $shadow-agara-soft;
+
+  @include respond-to(sm) {
+    width: 340px;
+  }
+
+  @include respond-to(lg) {
+    width: 380px;
+    padding: $space-5;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-4;
+  }
+
+  &__play-btn {
+    @include flex-center;
+    flex-shrink: 0;
+    width: $space-11;
+    height: $space-11;
+    border-radius: $radius-full;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    cursor: pointer;
+    @include transition(transform, $transition-slow);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__play-icon {
+    margin-left: $space-0_5;
+    width: $space-4;
+    height: $space-4;
+    fill: $agara-charcoal;
+    color: $agara-charcoal;
+  }
+
+  &__content {
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: rgba($agara-charcoal, 0.5);
+  }
+
+  &__title {
+    margin-top: $space-1;
+    font-family: $font-serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: $agara-charcoal;
+  }
+
+  &__location {
+    margin-top: $space-1;
+    font-size: 0.75rem;
+    color: rgba($agara-charcoal, 0.55);
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-5;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba($agara-charcoal, 0.65);
+    @include transition(color, $transition-slow);
+
+    &:hover {
+      color: $agara-charcoal;
+    }
+  }
+
+  &__link-icon {
+    width: $space-3;
+    height: $space-3;
+  }
+}

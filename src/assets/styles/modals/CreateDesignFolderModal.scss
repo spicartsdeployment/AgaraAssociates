@@ -1,0 +1,187 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.create-design-folder-modal {
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        padding: $space-4;
+    }
+
+    &__content {
+        background: white;
+        border-radius: $radius-lg;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: slideUp 300ms ease-out;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $space-6;
+        border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+        gap: $space-3;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: $color-foreground;
+        margin: 0;
+    }
+
+    &__close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        background: none;
+        border: none;
+        color: $color-muted;
+        cursor: pointer;
+        transition: all 150ms ease-out;
+
+        &:hover {
+            color: $color-foreground;
+            background: rgba(15, 23, 42, 0.05);
+            border-radius: $radius-md;
+        }
+    }
+
+    &__form {
+        padding: $space-6;
+        display: flex;
+        flex-direction: column;
+        gap: $space-4;
+    }
+
+    &__form-group {
+        display: flex;
+        flex-direction: column;
+        gap: $space-2;
+    }
+
+    &__label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: $color-foreground;
+        display: flex;
+        align-items: center;
+        gap: $space-1;
+    }
+
+    &__required {
+        color: #ef4444;
+        font-weight: 700;
+    }
+
+    &__input {
+        padding: $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        font-family: inherit;
+        color: $color-foreground;
+        background: white;
+        transition: all 150ms ease-out;
+
+        &::placeholder {
+            color: $color-muted;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 2px hsl-alpha($primary-h, 0.1);
+        }
+
+        &--error {
+            border-color: #ef4444;
+
+            &:focus {
+                box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+            }
+        }
+    }
+
+    &__textarea {
+        padding: $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        font-family: inherit;
+        color: $color-foreground;
+        background: white;
+        resize: vertical;
+        transition: all 150ms ease-out;
+
+        &::placeholder {
+            color: $color-muted;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 2px hsl-alpha($primary-h, 0.1);
+        }
+    }
+
+    &__select {
+        padding: $space-3;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: $radius-md;
+        font-size: 0.875rem;
+        color: $color-foreground;
+        background: white;
+        cursor: pointer;
+        transition: all 150ms ease-out;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 2px hsl-alpha($primary-h, 0.1);
+        }
+    }
+
+    &__error {
+        font-size: 0.8rem;
+        color: #ef4444;
+        font-weight: 500;
+    }
+
+    &__actions {
+        display: flex;
+        gap: $space-3;
+        justify-content: flex-end;
+        padding-top: $space-4;
+        border-top: 1px solid rgba(15, 23, 42, 0.06);
+
+        button {
+            min-width: 120px;
+        }
+    }
+}

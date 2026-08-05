@@ -1,0 +1,39 @@
+@use "../../../assets/styles/base/variables" as *;
+@use "../../../assets/styles/base/mixins" as *;
+
+.card {
+  border-radius: $radius-xl;
+  border: 1px solid hsl-alpha($border-h, 0.45);
+  background-color: $color-card;
+  color: resolve-hsl($card-foreground-h);
+  box-shadow: $shadow-card;
+  @include transition(transform box-shadow, 300ms ease-out);
+
+  &:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: $shadow-card-hover;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    padding: $space-4 $space-5;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: $tracking-tight;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $color-muted-foreground;
+  }
+
+  &__content {
+    padding: 0 $space-5 $space-5;
+  }
+}

@@ -1,0 +1,37 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.login-page {
+  &__card {
+    @include auth-card;
+  }
+
+  &__header {
+    @include auth-header;
+  }
+
+  &__title {
+    @include auth-title;
+  }
+
+  &__content {
+    @include auth-form-stack;
+  }
+
+  &__form {
+    @include auth-form-stack;
+  }
+
+  &__field {
+    @include auth-field;
+  }
+
+  &__submit {
+    @include btn-block-xl;
+  }
+
+  &__footer {
+    @include auth-footer-text;
+  }
+}

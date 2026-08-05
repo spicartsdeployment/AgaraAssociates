@@ -1,0 +1,404 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.project-tab-panels {
+  &__grid {
+    display: grid;
+    gap: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__grid-photos {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__card-content {
+    padding: $space-4;
+    display: flex;
+    justify-content: space-between;
+    gap: $space-3;
+  }
+
+  &__card-content--row {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__card-main {
+    min-width: 0;
+  }
+
+  &__card-title {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__card-meta {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__card-side {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  &__price {
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__badge {
+    font-size: 10px;
+    text-transform: capitalize;
+    margin-top: $space-1;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__actions--badges {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  &__amount {
+    font-weight: 700;
+  }
+
+  &__activity-content {
+    padding: $space-4;
+  }
+
+  &__activity-header {
+    display: flex;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__activity-title {
+    font-weight: 500;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__activity-date {
+    font-size: 10px;
+    color: $color-muted-foreground;
+    flex-shrink: 0;
+  }
+
+  &__activity-desc {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+    margin-top: $space-1;
+  }
+
+  &__activity-user {
+    font-size: 10px;
+    color: $color-muted-foreground;
+    margin-top: $space-2;
+  }
+
+  &__photo-card {
+    overflow: hidden;
+  }
+
+  &__photo-preview {
+    height: 9rem;
+    background: linear-gradient(to bottom right, #e2e8f0, #cbd5e1);
+  }
+
+  &__photo-body {
+    padding: $space-3;
+  }
+
+  &__photo-caption {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+  }
+
+  &__photo-date {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__empty-message {
+    color: $color-muted-foreground;
+    font-size: $space-3 + $space-0_5;
+    padding: $space-4;
+  }
+
+  &__empty-content {
+    padding: $space-8;
+    text-align: center;
+    color: $color-muted-foreground;
+  }
+
+  &__empty-link {
+    display: inline-flex;
+    margin-top: $space-3;
+    font-size: $space-3 + $space-0_5;
+    color: $color-primary;
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__loading {
+    padding: $space-6;
+    color: $color-muted-foreground;
+  }
+}
+
+.project-materials {
+  &__root {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-4;
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    border-radius: $radius-2xl;
+    background: linear-gradient(135deg, hsl-alpha($surface-h, 0.95), hsl-alpha($accent-h, 0.04));
+    box-shadow: $shadow-sm;
+  }
+
+  &__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-muted-foreground;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: $space-1;
+  }
+
+  &__subtitle {
+    margin-top: $space-2;
+    color: $color-muted-foreground;
+    max-width: 38rem;
+  }
+
+  &__hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__summary-grid {
+    display: grid;
+    gap: $space-3;
+    margin-bottom: $space-3;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__summary-card {
+    background-color: hsl-alpha($surface-h, 0.98);
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    box-shadow: $shadow-sm;
+    border-radius: $radius-2xl;
+
+    .card__content {
+      padding: $space-4;
+    }
+  }
+
+  &__summary-top {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-bottom: $space-2;
+  }
+
+  &__summary-icon {
+    width: $space-4;
+    height: $space-4;
+    color: $color-primary;
+  }
+
+  &__summary-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-muted-foreground;
+  }
+
+  &__summary-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: $space-1;
+    line-height: 1.2;
+  }
+
+  &__summary-note {
+    font-size: 0.9rem;
+    color: $color-muted-foreground;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    border-radius: $radius-2xl;
+    background: hsl-alpha($surface-h, 0.95);
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 55rem;
+  }
+
+  &__table th,
+  &__table td {
+    padding: $space-3 $space-3;
+    text-align: left;
+    border-bottom: 1px solid hsl-alpha($border-h, 0.3);
+    font-size: 0.9rem;
+  }
+
+  &__table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-weight: 600;
+    color: $color-muted-foreground;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: hsl-alpha($surface-h, 0.98);
+  }
+
+  &__table tr {
+    cursor: pointer;
+  }
+
+  &__table tr:hover {
+    background-color: hsl-alpha($surface-h, 0.8);
+  }
+
+  &__table-cell--numeric {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__table-name {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__table-availability {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 5.5rem;
+    padding: $space-1 $space-2;
+    border-radius: $radius-full;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    &--success {
+      color: $color-success;
+      background: hsl-alpha($success-h, 0.12);
+    }
+
+    &--warning {
+      color: $color-warning;
+      background: hsl-alpha($warning-h, 0.12);
+    }
+
+    &--critical {
+      color: $color-destructive;
+      background: hsl-alpha($destructive-h, 0.12);
+    }
+  }
+
+  &__table-action {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    color: $color-primary;
+    font-weight: 600;
+  }
+
+  &__empty-content {
+    padding: $space-8;
+  }
+
+  &__empty-title {
+    font-weight: 600;
+    margin-bottom: $space-2;
+  }
+
+  &__empty-text {
+    color: $color-muted-foreground;
+    margin-bottom: $space-4;
+  }
+
+  &__empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__empty-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $space-2;
+  }
+}

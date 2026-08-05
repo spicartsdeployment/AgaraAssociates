@@ -1,0 +1,103 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.clients-page {
+  @include page-root;
+
+  &__action-btn {
+    @include btn-rounded-xl;
+  }
+
+  &__action-icon {
+    @include icon-sm;
+  }
+
+  &__grid {
+    @include page-grid-2-3;
+  }
+
+  &__card-link {
+    @include card-link;
+  }
+
+  &__card {
+    @include card-full-height;
+  }
+
+  &__card-content {
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+  }
+
+  &__avatar {
+    width: $space-10;
+    height: $space-10;
+  }
+
+  &__avatar-fallback {
+    background-color: $color-secondary;
+    color: $color-foreground;
+    font-size: 0.875rem;
+  }
+
+  &__card-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__client-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+    @include text-truncate;
+  }
+
+  &__client-company {
+    font-size: 0.875rem;
+    @include text-muted;
+    @include text-truncate;
+  }
+
+  &__contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    font-size: 0.875rem;
+    @include text-muted;
+
+    p:first-child {
+      @include text-truncate;
+    }
+  }
+
+  &__stats {
+    @include page-stat-row;
+  }
+
+  &__stat-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    @include text-tabular;
+
+    &--sm {
+      font-size: 0.875rem;
+    }
+  }
+
+  &__stat-label {
+    @include page-stat-label;
+  }
+
+  &__last-contact {
+    font-size: 0.75rem;
+    @include text-muted;
+  }
+}

@@ -1,0 +1,13 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.boq-header-actions {
+  &__btn {
+    border-radius: $radius-xl;
+  }
+
+  &__icon {
+    width: $space-4;
+    height: $space-4;
+  }
+}

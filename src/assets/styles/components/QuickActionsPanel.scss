@@ -1,0 +1,186 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.quick-actions-panel {
+  &__strip {
+    display: flex;
+    align-items: center;
+    gap: $space-1_5;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsl-alpha($muted-foreground-h, 0.3) transparent;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: hsl-alpha($muted-foreground-h, 0.25);
+      border-radius: $radius-full;
+    }
+  }
+
+  &__strip-item {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-3;
+    border-radius: $radius-2xl;
+    background-color: hsl-alpha($surface-h, 0.6);
+    border: 1px solid hsl-alpha($border-h, 0.5);
+    flex-shrink: 0;
+    text-decoration: none;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__strip-icon-wrap {
+    display: flex;
+    height: 1.8rem;
+    width: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-lg;
+
+    &--primary {
+      background-color: $color-primary;
+      border: 1px solid hsl-alpha($border-h, 0.5);
+      color: $color-foreground;
+    }
+
+    &--surface {
+      background-color: $color-surface;
+      color: $color-heading;
+    }
+
+    &--accent {
+      background-color: hsl-alpha($accent-h, 0.2);
+      color: $color-foreground;
+    }
+  }
+
+  &__strip-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+  }
+
+  &__strip-label {
+    font-size: 0.74rem;
+    font-weight: 600;
+  }
+
+  &__compact {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $space-1_5;
+  }
+
+  &__compact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-1;
+    padding: $space-2 $space-2;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($surface-h, 0.5);
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    text-decoration: none;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+  }
+
+  &__compact-icon-wrap {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-lg;
+
+    &--primary {
+      background-color: $color-primary;
+      border: 1px solid hsl-alpha($border-h, 0.5);
+      color: $color-foreground;
+    }
+
+    &--surface {
+      background-color: $color-surface;
+      color: $color-heading;
+    }
+
+    &--accent {
+      background-color: hsl-alpha($accent-h, 0.2);
+      color: $color-foreground;
+    }
+  }
+
+  &__compact-icon {
+    width: $space-3_5;
+    height: $space-3_5;
+  }
+
+  &__compact-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  &__card {
+    border-radius: $radius-xl;
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    background-color: hsl-alpha($surface-h, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: $shadow-glass-sm;
+    padding: $space-2_5 $space-3;
+    flex-shrink: 0;
+
+    @include respond-to(lg) {
+      display: none;
+    }
+  }
+
+  &__card-title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $color-foreground;
+    margin-bottom: $space-2;
+  }
+
+  &__panel {
+    border-radius: $radius-xl;
+    border: 1px solid hsl-alpha($border-h, 0.4);
+    background-color: hsl-alpha($surface-h, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: $shadow-glass-sm;
+    flex-shrink: 0;
+  }
+
+  &__panel-inner {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-2_5 $space-3;
+  }
+
+  &__panel-title {
+    font-size: $font-size-sm;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  &__panel-divider {
+    height: 1px;
+    flex: 1;
+    background-color: $color-divider;
+  }
+}

@@ -1,0 +1,141 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-8;
+  max-width: 48rem;
+  @include fade-in;
+
+  &__profile-content {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+  }
+
+  &__profile-avatar {
+    width: $space-16;
+    height: $space-16;
+  }
+
+  &__profile-name {
+    font-weight: 600;
+  }
+
+  &__profile-role {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+  }
+
+  &__studio-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__team-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__team-member {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-3;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__team-avatar-fallback {
+    background-color: $color-primary;
+    color: #ffffff;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__team-info {
+    flex: 1;
+  }
+
+  &__team-name {
+    font-weight: 500;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__team-role {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__invite-btn {
+    width: 100%;
+  }
+
+  &__integrations {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__integration-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $space-4;
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+  }
+
+  &__integration-main {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+  }
+
+  &__integration-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-success;
+  }
+
+  &__integration-name {
+    font-weight: 500;
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__integration-desc {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__billing-card {
+    border-color: hsl-alpha($primary-h, 0.2);
+  }
+
+  &__billing-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__billing-name {
+    font-weight: 600;
+  }
+
+  &__billing-meta {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+  }
+
+  &__billing-btn {
+    margin-top: $space-4;
+  }
+}

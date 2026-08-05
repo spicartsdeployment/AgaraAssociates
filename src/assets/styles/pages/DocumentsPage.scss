@@ -1,0 +1,66 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.documents-page {
+  @include page-root;
+
+  &__grid {
+    @include page-grid-2-4;
+  }
+
+  &__card-content {
+    padding: $space-4;
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__icon-wrap {
+    display: flex;
+    height: $space-10;
+    width: $space-10;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background-color: hsl-alpha($primary-h, 0.1);
+  }
+
+  &__icon {
+    @include icon-md;
+    color: $color-primary;
+  }
+
+  &__info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__name {
+    font-weight: 500;
+    @include text-truncate;
+  }
+
+  &__project {
+    font-size: 0.75rem;
+    @include text-muted;
+    @include text-truncate;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-top: $space-2;
+  }
+
+  &__type-badge {
+    @include badge-xs;
+    @include badge-capitalize;
+  }
+
+  &__date {
+    font-size: 10px;
+    @include text-muted;
+  }
+}

@@ -1,0 +1,91 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.sidebar {
+  display: none;
+  width: 240px;
+  flex-direction: column;
+  @include glass-subtle;
+  border-right: 1px solid hsl-alpha($border-h, 0.4);
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  @include respond-to(lg) {
+    display: flex;
+  }
+
+  &__brand {
+    display: flex;
+    height: $space-14;
+    align-items: center;
+    padding-left: $space-5;
+    padding-right: $space-5;
+    border-bottom: 1px solid $color-divider;
+  }
+
+  &__brand-link {
+    min-width: 0;
+  }
+
+  &__scroll {
+    flex: 1;
+    padding-top: $space-3;
+    padding-bottom: $space-3;
+  }
+
+  &__nav {
+    padding-left: $space-3;
+    padding-right: $space-3;
+
+    > * + * {
+      margin-top: $space-5;
+    }
+  }
+
+  &__group-label {
+    padding-left: $space-3;
+    margin-bottom: $space-1_5;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: $tracking-wider;
+    color: $color-foreground;
+  }
+
+  &__group-items {
+    > * + * {
+      margin-top: $space-0_5;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-2_5;
+    border-radius: $radius-2xl;
+    padding: $space-2 $space-3;
+    font-size: 13px;
+    font-weight: 500;
+    color: $color-foreground;
+    @include transition(all, $transition-base);
+
+    &:hover {
+      background-color: $color-surface-hover;
+    }
+
+    &--active {
+      border-radius: $radius-full;
+      box-shadow: $shadow-sm;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      background: hsl-alpha($primary-h, 0.18);
+      color: $color-primary-foreground;
+    }
+  }
+
+  &__link-icon {
+    width: $space-4;
+    height: $space-4;
+    flex-shrink: 0;
+  }
+}

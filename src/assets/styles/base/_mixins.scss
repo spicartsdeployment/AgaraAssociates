@@ -1,0 +1,240 @@
+@use "variables" as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin transition($props: all, $duration: $transition-base) {
+  transition: $props $duration;
+}
+
+@mixin respond-to($bp) {
+  @if $bp ==sm {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  }
+
+  @else if $bp ==md {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  }
+
+  @else if $bp ==lg {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  }
+
+  @else if $bp ==xl {
+    @media (min-width: $bp-xl) {
+      @content;
+    }
+  }
+
+  @else if $bp ==2xl {
+    @media (min-width: $bp-2xl) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: $bp) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-max($bp) {
+  @if $bp ==sm {
+    @media (max-width: #{$bp-sm - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $bp ==md {
+    @media (max-width: #{$bp-md - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $bp ==lg {
+    @media (max-width: #{$bp-lg - 1px}) {
+      @content;
+    }
+  }
+
+  @else if $bp ==xl {
+    @media (max-width: #{$bp-xl - 1px}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (max-width: $bp) {
+      @content;
+    }
+  }
+}
+
+@mixin container-x($pad: $space-6) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $pad;
+  padding-right: $pad;
+}
+
+@mixin container($max: 72rem, $pad: $space-6) {
+  @include container-x($pad);
+  max-width: $max;
+}
+
+@mixin hover-scale($scale: 1.05) {
+  @include transition(transform);
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin object-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin text-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+}
+
+@mixin button-primary {
+  @include flex-center;
+  @include transition;
+  display: inline-flex;
+  gap: $space-2;
+  min-height: 2.5rem;
+  padding: $space-2_5 $space-4;
+  border-radius: $radius-xl;
+  background: $agara-charcoal;
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  border: none;
+  cursor: pointer;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin button-outline {
+  @include flex-center;
+  @include transition;
+  display: inline-flex;
+  gap: $space-2;
+  min-height: 2.5rem;
+  padding: $space-2_5 $space-4;
+  border-radius: $radius-xl;
+  background: transparent;
+  color: $color-foreground;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  border: 1px solid hsl-alpha($border-h, 0.4);
+  cursor: pointer;
+
+  &:hover {
+    border-color: $color-border;
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+@mixin glass-card {
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  background: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $shadow-glass;
+}
+
+@mixin glass-subtle {
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+@mixin glass-dark {
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  background: rgba(31, 31, 31, 0.92);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: $shadow-glass-dark;
+  color: $color-primary-foreground;
+}
+
+@mixin agara-card-surface($radius: $radius-glass, $shadow: $shadow-agara-glass) {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.56) 0%,
+      rgba(255, 255, 255, 0.58) 45%,
+      rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: blur($glass-blur-premium) saturate(180%);
+  -webkit-backdrop-filter: blur($glass-blur-premium) saturate(180%);
+  // border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: $radius;
+  box-shadow: $shadow;
+  isolation: isolate;
+}
+
+@mixin agara-glass {
+  @include agara-card-surface;
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin focus-ring {
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid $color-ring;
+    outline-offset: 2px;
+  }
+}
+
+// Keyframes live in animations/_keyframes.scss (loaded via index.scss)
+@mixin fade-in($duration: 500ms) {
+  animation: fade-in $duration ease-out;
+}

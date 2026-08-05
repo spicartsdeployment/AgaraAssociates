@@ -1,0 +1,135 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.design-studio-client-view {
+  &__toolbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -$space-2;
+    margin-bottom: $space-2;
+  }
+
+  &__alert-card {
+    border-color: hsl-alpha($primary-h, 0.2);
+    background-color: hsl-alpha($primary-h, 0.05);
+  }
+
+  &__alert-content {
+    padding: $space-4;
+    display: flex;
+    gap: $space-3;
+  }
+
+  &__alert-icon {
+    width: $space-5;
+    height: $space-5;
+    color: $color-primary;
+    flex-shrink: 0;
+  }
+
+  &__alert-text {
+    font-size: $space-3 + $space-0_5;
+  }
+
+  &__empty-card {
+    border-style: dashed;
+  }
+
+  &__empty-content {
+    padding: $space-16 0;
+    text-align: center;
+    color: $color-muted-foreground;
+  }
+
+  &__empty-title {
+    font-weight: 500;
+    color: $color-foreground;
+  }
+
+  &__empty-subtitle {
+    font-size: $space-3 + $space-0_5;
+    margin-top: $space-1;
+  }
+
+  &__tab-content {
+    margin-top: $space-6;
+  }
+
+  &__grid {
+    display: grid;
+    gap: $space-4;
+
+    @include respond-to(sm) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(lg) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @include respond-to(xl) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__file-card {
+    cursor: pointer;
+  }
+
+  &__file-content {
+    padding: 0;
+  }
+
+  &__file-preview {
+    height: 10rem;
+    border-radius: $radius-2xl $radius-2xl 0 0;
+    background: linear-gradient(to bottom right, #f1f5f9, #e2e8f0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include transition(background-color);
+
+    .design-studio-client-view__file-card:hover & {
+      background: linear-gradient(
+        to bottom right,
+        hsl-alpha($primary-h, 0.1),
+        hsl-alpha($secondary-h, 0.1)
+      );
+    }
+  }
+
+  &__file-type {
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    color: $color-muted-foreground;
+  }
+
+  &__file-body {
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__file-name {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__file-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__file-version {
+    font-size: $space-3;
+    color: $color-muted-foreground;
+  }
+
+  &__tab-trigger {
+    text-transform: capitalize;
+  }
+}

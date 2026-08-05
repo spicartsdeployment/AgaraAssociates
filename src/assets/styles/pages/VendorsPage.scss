@@ -1,0 +1,56 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+@use "app-page-common" as *;
+
+.vendors-page {
+  @include page-root;
+
+  &__grid {
+    @include page-grid-2-3;
+  }
+
+  &__card-content {
+    padding: $space-6;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+
+    &--compact {
+      gap: $space-2;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__vendor-name {
+    font-weight: 600;
+    font-size: 1.125rem;
+
+    &--md {
+      font-size: 1rem;
+    }
+  }
+
+  &__delivery {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__quote-label {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+
+  &__quote-value {
+    font-weight: 500;
+  }
+
+  &__placeholder-text {
+    font-size: 0.875rem;
+    @include text-muted;
+  }
+}

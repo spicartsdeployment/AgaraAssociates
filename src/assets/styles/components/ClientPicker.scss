@@ -1,0 +1,47 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+.client-picker {
+  &__body {
+    > * + * {
+      margin-top: $space-3;
+    }
+  }
+
+  &__mode-toggle {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2;
+  }
+
+  &__mode-btn {
+    border-radius: $radius-xl;
+    border: 1px solid $color-border;
+    padding: $space-1_5 $space-3;
+    font-size: $space-3 + $space-0_5;
+    font-weight: 500;
+    @include transition(background-color);
+
+    &:hover {
+      background-color: $color-muted;
+    }
+
+    &--active {
+      border-color: $color-primary;
+      background-color: hsl-alpha($primary-h, 0.1);
+      color: $color-foreground;
+    }
+  }
+
+  &__empty {
+    font-size: $space-3 + $space-0_5;
+    color: $color-muted-foreground;
+    border-radius: $radius-xl;
+    border: 1px dashed $color-border;
+    padding: $space-2 $space-3;
+  }
+
+  &__input {
+    border-radius: $radius-xl;
+  }
+}
