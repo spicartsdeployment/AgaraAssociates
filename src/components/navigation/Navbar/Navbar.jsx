@@ -32,9 +32,9 @@ export function Navbar() {
         </ul>
 
         <div className="marketing-navbar__actions">
-          <Link to="/login" className="marketing-navbar__login">
+          {/* <Link to="/login" className="marketing-navbar__login">
             Login
-          </Link>
+          </Link> */}
           <Link
             to="/contact"
             className="marketing-navbar__cta"
