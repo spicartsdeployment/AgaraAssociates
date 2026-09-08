@@ -88,26 +88,26 @@ export function Footer() {
             <ul className="marketing-footer__list marketing-footer__list--contact">
               <li>
                 <a
-                  href="tel:+919000000000"
+                  href="tel:+919963659994"
                   className="marketing-footer__contact-link"
                 >
                   <Phone
                     className="marketing-footer__contact-icon"
                     strokeWidth={1.5}
                   />
-                  +91 9XXXXXXXX
+                  +91 9963659994
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:hello@agara.in"
+                  href="mailto:agara.projects@gmail.com"
                   className="marketing-footer__contact-link"
                 >
                   <Mail
                     className="marketing-footer__contact-icon"
                     strokeWidth={1.5}
                   />
-                  hello@agara.in
+                  agara.projects@gmail.com
                 </a>
               </li>
               <li className="marketing-footer__contact-item">
