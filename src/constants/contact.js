@@ -82,8 +82,8 @@ export const STUDIO_ADDRESS = {
     "https://www.google.com/maps/search/?api=1&query=Hyderabad+Telangana+India",
   embedUrl:
     "https://maps.google.com/maps?q=Hyderabad%2C%20Telangana%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed",
-  email: "hello@agara.in",
-  phone: "+91 9XXXXXXXX",
+  email: "agaraassociates@gmail.com",
+  phone: "+91 99636 59994",
   hours: "Mon – Sat · 10:00 AM – 6:30 PM",
 };
 
