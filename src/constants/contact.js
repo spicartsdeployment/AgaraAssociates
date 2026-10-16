@@ -88,7 +88,7 @@ export const STUDIO_ADDRESS = {
 };
 
 export const CONTACT_DETAILS = [
-  { icon: "Phone", label: "+91 9XXXXXXXX", href: "tel:+919000000000" },
-  { icon: "Mail", label: "hello@agara.in", href: "mailto:hello@agara.in" },
+  { icon: "Phone", label: "+91 99636 59994" href: "tel:+91 99636 59994" },
+  { icon: "Mail", label: "agaraassociates@gmail.com", href: "mailto:agaraassociates@gmail.com" },
   { icon: "MapPin", label: "Hyderabad, India", href: null },
 ];
